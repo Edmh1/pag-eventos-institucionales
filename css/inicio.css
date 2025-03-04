@@ -1,0 +1,67 @@
+/*Estos son los estilos del header*/
+header{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    gap: 20px;
+    padding: 10px 30px;
+}
+
+#logo{
+    width: 100px;
+    height: 100px;
+}
+
+#cont-nombre-institucion{
+    display: flex;
+    align-items: center;
+}
+
+#cont-ingresar{
+    display: flex;
+    width: 150px;
+    margin-left: auto;
+   align-items: center;
+}
+
+#ingresar{
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    background-color: #47525E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/*Estos son los estilos del contenido principal*/
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 15%;
+}
+
+#cont-titulo{
+    text-align: center;
+}
+
+#cont-buscador{
+    text-align: right;
+}
+
+#cont-eventos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+
+}
+
+.cajita-evento {
+    width: 100px;
+    height: 100px;
+    background-color: #47525E;
+}
+
+
+
