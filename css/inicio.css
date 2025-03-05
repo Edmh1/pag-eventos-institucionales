@@ -203,7 +203,7 @@ main{
 
 /*Estos son los estilos del footer*/
 footer {
-    margin-top: 2%;
+    margin-top: auto;
     height: 150px;
     background-color: #004a87;
     width: 100%;
