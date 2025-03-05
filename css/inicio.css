@@ -219,3 +219,9 @@ footer {
     color: white;
     font-family: 'Leelwadee-Bold', sans-serif;
 }
+
+@media screen and (max-width:760px) {
+    #cont-buscador{
+        text-align: center;
+    }
+}
