@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Leelwadee';
+    src: url(../resources/fonts/leelwadee.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Leelwadee-Bold';
+    src: url(../resources/fonts/leelawdb.woff2) format('woff2');
+}
+
 /*Estos son los estilos generales de la página*/
 body{
     margin: 0;
@@ -7,6 +17,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /*Estos son los estilos del header*/
@@ -14,7 +25,9 @@ header{
     display: flex;
     border-bottom: 1px solid #ccc;
     gap: 20px;
-    padding: 10px 30px;
+    padding: 10px 10%;
+    background-color: #004A87;
+    border-bottom: 2px solid #c08e2d;
 }
 
 #logo{
@@ -25,6 +38,8 @@ header{
 #cont-nombre-institucion{
     display: flex;
     align-items: center;
+    font-family: 'Leelwadee', sans-serif;
+    color:white;
 }
 
 #cont-ingresar{
@@ -42,8 +57,9 @@ header{
 #ingresar{
     width: 100%;
     height: 40px;
+    font-family: 'Leelwadee', sans-serif;
     align-items: center;
-    background-color: #47525E;
+    background-color: #337ab7;
     color: white;
     border: none;
     border-radius: 5px;
@@ -63,13 +79,34 @@ main{
     text-align: center;
 }
 
+#titulo{
+    font-family: 'Open-Sans-Bold', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #003A6B;
+}
+
 #cont-buscador{
     text-align: right;
 }
 
+#buscador{
+    font-family: inherit;
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;   
+}
+
+#buscador:focus{
+    border: 1px solid #337ab7;
+    outline:none;
+}
+
 #cont-eventos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: auto;
     gap: 30px;
 }
@@ -80,13 +117,105 @@ main{
     background-color: #47525E;
 }
 
-/*Estos son los estilos del footer*/
-footer {
-    margin-top: auto;
+.cajita-evento:hover{
+    background-color: #323a45;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+/*Estos son los estilos del login*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 150px;
-    background-color: #47525E;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor del modal */
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+    position: relative;
+}
+
+/* Botón cerrar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* Título */
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
+/* Estilo de los inputs */
+.modal-content input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilo del botón */
+#btnIngresar {
+    width: 100%;
+    padding: 10px;
+    background: #47525E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+#btnIngresar:hover {
+    background: #323a45; /* Oscurece un poco al pasar el mouse */
 }
 
 
+/*Estos son los estilos del footer*/
+footer {
+    margin-top: 2%;
+    height: 150px;
+    background-color: #004a87;
+    width: 100%;
+    border-top: 2px solid #c08e2d;
+    padding: 1rem 0 0 0;
+}
 
+#cont-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    color: white;
+    font-family: 'Leelwadee-Bold', sans-serif;
+}

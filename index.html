@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos Institucionales</title>
     <link rel="stylesheet" href="css/inicio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div id="cont-logo">
-            <img id="logo" src="resources/img/logo-umagdalena.svg" alt="Logo Institucional">
+            <img id="logo" src="resources/img/unimag.png" alt="Logo Institucional">
         </div>
         <div id="cont-nombre-institucion">
             <h2 id="nombre-institucion">UNIVERSIDAD DEL MAGDALENA</h2>
         </div>
         <div id="cont-ingresar">
-            <a href="">
                 <button id="ingresar">Ingresar</button>
-            </a>
         </div>
     </header>
     <main>
@@ -35,8 +36,22 @@
             <div class="cajita-evento"></div>
             <div class="cajita-evento"></div>
         </section>
+        <div id="modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Iniciar Sesión</h2>
+                <input type="text" placeholder="Usuario">
+                <input type="password" placeholder="Contraseña">
+                <button id="btnIngresar">Entrar</button>
+            </div>
+        </div>
     </main>
     <footer>
+        <div id="cont-footer">
+            <p id="footer">Universidad del Magdalena - Todos los derechos reservados</p>
+            <p id="footer">ZapaticosCorp</p>
+        </div>
     </footer>
+    <script src="./js/main.js"></script>
 </body>
 </html>
