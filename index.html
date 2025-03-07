@@ -18,8 +18,8 @@
         <div id="cont-nombre-institucion">
             <h2 id="nombre-institucion">UNIVERSIDAD DEL MAGDALENA</h2>
         </div>
-        <div id="cont-ingresar">
-                <button id="ingresar">Ingresar</button>
+        <div id="cont-ingresar" class="header-buttons">
+                <button id="ingresar" class="button-header" onclick="openModal()">Ingresar</button>
         </div>
     </header>
     <main>
@@ -41,9 +41,9 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Iniciar Sesión</h2>
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
-                <button id="btnIngresar">Entrar</button>
+                <input id="user" type="text" placeholder="Usuario">
+                <input id= "password" type="password" placeholder="Contraseña">
+                <button id="btnIngresar" onclick="changeUserType()">Entrar</button>
             </div>
         </div>
     </main>

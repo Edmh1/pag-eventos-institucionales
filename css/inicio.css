@@ -31,6 +31,7 @@ header{
     border-bottom: 2px solid #c08e2d;
 }
 
+
 #logo{
     width: 100px;
     height: 100px;
@@ -47,7 +48,7 @@ header{
     display: flex;
     width: 150px;
     margin-left: auto;
-   align-items: center;
+    align-items: center;
 }
 
 #cont-ingresar a {
@@ -55,16 +56,38 @@ header{
     width: 100%; 
 }
 
-#ingresar{
+.user-header{
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+    margin-left: auto;
+}
+
+.user-header img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.button-header{
     width: 100%;
     height: 40px;
-    font-family: 'Leelwadee', sans-serif;
+    padding: 0 30px;
+    font-family: 'Open-Sans-Bold', sans-serif;
     align-items: center;
     background-color: #337ab7;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.button-header:hover{
+    background-color: #6194c1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
 }
 
 /*Estos son los estilos del contenido principal*/
@@ -97,7 +120,7 @@ main{
     height: 40px;
     padding: 0 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;   
+    border: 1px solid #acacac;   
 }
 
 #buscador:focus{
@@ -134,7 +157,7 @@ main{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,8 +190,10 @@ main{
 /* Modal: Título */
 .modal-content h2 {
     margin-bottom: 20px;
+    font-family: 'Open-Sans-Bold', sans-serif;
+    font-weight: 700;
     font-size: 22px;
-    color: #333;
+    color: #003A6B;
 }
 
 /* Modal: Estilo de los inputs */
@@ -181,11 +206,18 @@ main{
     font-size: 16px;
 }
 
+.modal-content input:focus {
+    border: 1px solid #337ab7;
+    outline: none;
+}
+
 /* Modal: Estilo del botón */
 #btnIngresar {
     width: 100%;
     padding: 10px;
-    background: #47525E;
+    font-family: 'Open-Sans-Bold', sans-serif;
+    font-weight: 700;
+    background: #159829;
     color: white;
     border: none;
     border-radius: 5px;
@@ -195,7 +227,7 @@ main{
     transition: background 0.3s ease;
 }
 #btnIngresar:hover {
-    background: #323a45; 
+    background: #0d6e1b;
 }
 
 /*Estos son los estilos del footer*/
@@ -247,4 +279,14 @@ footer {
         flex-direction: flex;
         flex-wrap: wrap;
     }
+
+    .user-header img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-header button{
+        display: none;
+    }
+
 }
