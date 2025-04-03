@@ -1,3 +1,51 @@
+document.addEventListener("DOMContentLoaded", function () {
+    
+    // Botón "Ingresar" en el header
+    document.getElementById("ingresar").addEventListener("click", function (event) {
+        event.preventDefault(); 
+        document.getElementById("modal").style.display = "flex"; // Muestra el modal
+    });
+    
+
+    // Botón "cerrar" dentro del modal
+    document.querySelector(".close").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none"; // Oculta el modal
+    });
+
+    document.querySelector(".close-register").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none"; // Oculta el modal
+    });
+
+    let registerButton = document.getElementById("register-btn");
+    let loginButton = document.getElementById("login-btn");
+    let loginForm = document.getElementById("login");
+    let registerForm = document.getElementById("register");
+
+    function switchForms(hideForm, showForm) {
+        hideForm.classList.add("flip-out-hor-top");
+        hideForm.addEventListener("animationend", function onAnimationEnd() {
+            hideForm.classList.remove("flip-out-hor-top");
+            hideForm.style.display = "none";
+            showForm.style.display = "block";
+            showForm.classList.add("flip-in-hor-bottom");
+            showForm.addEventListener("animationend", function onShowAnimationEnd() {
+                showForm.classList.remove("flip-in-hor-bottom");
+                showForm.removeEventListener("animationend", onShowAnimationEnd);
+            });
+            hideForm.removeEventListener("animationend", onAnimationEnd);
+        });
+    }
+
+    registerButton.addEventListener("click", function () {
+        switchForms(loginForm, registerForm);
+    });
+
+    loginButton.addEventListener("click", function () {
+        switchForms(registerForm, loginForm);
+    });
+    
+});
+
 function openModal(){
     document.getElementById("ingresar").addEventListener("click", function (event) {
         event.preventDefault();
