@@ -250,7 +250,7 @@ main{
 }
 
 /* Modal: Estilo del botón */
-#btnIngresar {
+#btnIngresar, #btnRegistrarse {
     width: 100%;
     padding: 10px;
     background: #47525E;
@@ -262,9 +262,11 @@ main{
     margin-top: 10px;
     transition: background 0.3s ease;
 }
-#btnIngresar:hover {
+#btnIngresar:hover, #btnRegistrarse:hover {
     background: #323a45; 
 }
+
+
 
 #modal-text{
     font-family: 'Leelwadee', sans-serif;
