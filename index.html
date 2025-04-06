@@ -1,124 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="ZapaticosCorp">
-    <title>Eventos Institucionales</title>
-    <link rel="stylesheet" href="css/inicio.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login y Registro</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-    <header>
-        <div id="cont-logo">
-            <img id="logo" src="resources/img/logo-umagdalena.svg" alt="Logo Institucional">
-        </div>
-        <div id="cont-nombre-institucion">
-            <h2 id="nombre-institucion">UNIVERSIDAD DEL MAGDALENA</h2>
-        </div>
-        <div id="cont-ingresar">
-            <button id="ingresar">Ingresar</button>
-        </div>
-    </header>
-    <main>
-        <div id="cont-titulo">
-            <h2 id="titulo">PROXIMOS EVENTOS</h2>
-        </div>
-        <div id="cont-buscador">
-            <input type="text" id="buscador" placeholder="Buscar...">
-        </div>
-        <section id="cont-eventos">
-            <div class="cajita-evento">
-                <img src="resources/img/party.jpg" alt="Evento">
-                <div class="info">
-                    <h3>Nombre del Evento</h3>
-                    <p>Lugar: Auditorio Central</p>
-                    <p>Hora: 6:00 PM</p>
-                </div>
-            </div>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Correo" required />
+    <input type="password" id="loginPassword" placeholder="Contraseña" required />
+    <button type="submit">Iniciar sesión</button>
+  </form>
 
-            <div class="cajita-evento">
-                <img src="resources/img/party.jpg" alt="Evento">
-                <div class="info">
-                    <h3>Nombre del Evento</h3>
-                    <p>Lugar: Auditorio Central</p>
-                    <p>Hora: 6:00 PM</p>
-                </div>
-            </div>
+  <h1>Registro Estudiante</h1>
+  <form id="registroEstudianteForm">
+    <input type="text" id="nombreEstudiante" placeholder="Nombre completo" required />
+    <input type="email" id="correoEstudiante" placeholder="Correo" required />
+    <input type="password" id="contrasenaEstudiante" placeholder="Contraseña" required />
+    <button type="submit">Registrar estudiante</button>
+  </form>
 
-            <div class="cajita-evento">
-                <img src="resources/img/party.jpg" alt="Evento">
-                <div class="info">
-                    <h3>Nombre del Evento</h3>
-                    <p>Lugar: Auditorio Central</p>
-                    <p>Hora: 6:00 PM</p>
-                </div>
-            </div>
+  <h1>Registro Funcionario</h1>
+  <form id="registroFuncionarioForm">
+    <input type="text" id="nombreFuncionario" placeholder="Nombre completo" required />
+    <input type="email" id="correoFuncionario" placeholder="Correo" required />
+    <input type="password" id="contrasenaFuncionario" placeholder="Contraseña" required />
+    <input type="text" id="cargoFuncionario" placeholder="Cargo" required />
+    <button type="submit">Registrar funcionario</button>
+  </form>
 
-            <div class="cajita-evento">
-                <img src="resources/img/party.jpg" alt="Evento">
-                <div class="info">
-                    <h3>Nombre del Evento</h3>
-                    <p>Lugar: Auditorio Central</p>
-                    <p>Hora: 6:00 PM</p>
-                </div>
-            </div>
-
-            <div class="cajita-evento">
-                <img src="resources/img/party.jpg" alt="Evento">
-                <div class="info">
-                    <h3>Nombre del Evento</h3>
-                    <p>Lugar: Auditorio Central</p>
-                    <p>Hora: 6:00 PM</p>
-                </div>
-            </div>
-
-            <div class="cajita-evento">
-                <img src="resources/img/party.jpg" alt="Evento">
-                <div class="info">
-                    <h3>Nombre del Evento</h3>
-                    <p>Lugar: Auditorio Central</p>
-                    <p>Hora: 6:00 PM</p>
-                </div>
-            </div>
-
-        </section>
-        <div id="modal" class="modal" style="display: none;">
-            <div id="login" class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Iniciar Sesión</h2>
-                <input type="text" id="user" placeholder="Usuario (Código estudiantil)">
-                <input type="password" id="password" placeholder="Contraseña">
-                <button id="btnIngresar" onclick="changeUserType()">Entrar</button>
-                <p id="modal-text">No tienes usuario? <a id="register-btn">Registrate</a></p>
-            </div>
-            <div id="register" class="modal-content">
-                <span class="close-register">&times;</span>
-                <h2>Registrate</h2>
-                <input type="text" placeholder="Usuario (Código estudiantil)">
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Apellido">
-                <input type="text" placeholder="Correo electrónico">
-                <input type="password" placeholder="Contraseña">
-                <input type="password" placeholder="Confirmar contraseña">
-                <button id="btnRegistrarse">Registrarse</button>
-                <p id="modal-text">Ya tienes usuario? <a id="login-btn">Iniciar Sesión</a></p>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div id="cont-footer">
-            <p id="footer">Universidad del Magdalena - Todos los derechos reservados</p>
-            <p id="footer">ZapaticosCorp</p>
-        </div>
-    </footer>
-    <script src="./js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/register.js"></script>
 </body>
-
 </html>
