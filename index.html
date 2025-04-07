@@ -90,27 +90,38 @@
 
         </section>
         <div id="modal" class="modal" style="display: none;">
-            <div id="login" class="modal-content">
+            <!-- Modal Login -->
+            <div id="login" class="modal-content modal-login">
                 <span class="close">&times;</span>
                 <h2>Iniciar Sesión</h2>
-                <input type="text" id="user" placeholder="Usuario (Código estudiantil)">
-                <input type="password" id="password" placeholder="Contraseña">
-                <button id="btnIngresar" onclick="changeUserType()">Entrar</button>
-                <p id="modal-text">No tienes usuario? <a id="register-btn">Registrate</a></p>
+                <input type="email" id="email-user" placeholder="Email" required>
+                <input type="password" id="password-user" placeholder="Contraseña">
+                <button id="btnIngresar">Entrar</button>
+                <p id="modal-text">¿No tienes usuario? <a id="register-btn" href="#">Regístrate</a></p>
             </div>
-            <div id="register" class="modal-content">
+        
+            <!-- Modal Registro -->
+            <div id="register" class="modal-content modal-register">
                 <span class="close-register">&times;</span>
-                <h2>Registrate</h2>
-                <input type="text" placeholder="Usuario (Código estudiantil)">
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Apellido">
-                <input type="text" placeholder="Correo electrónico">
-                <input type="password" placeholder="Contraseña">
-                <input type="password" placeholder="Confirmar contraseña">
+                <h2>Regístrate</h2>
+                <select name="tipo-usuario" id="tipo-usuario" required>
+                    <option value="" disabled selected>Selecciona Tipo</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="funcionario">Funcionario</option>
+                </select>
+                <input id="nombre" type="text" placeholder="Nombre" required>
+                <input id="apellido" type="text" placeholder="Apellido">
+                <input id="codigo" type="text" placeholder="Código" required>
+                <input id="email" type="text" placeholder="Email" required>
+                <input id="programa-estudiante" type="text" placeholder="Programa" style="display: none;">
+                <input id="cargo-funcionario" type="text" placeholder="Cargo" style="display: none;">
+                <input id="contrasena" type="password" placeholder="Contraseña" required>
+                <input id="Confirmar-contrasena" type="password" placeholder="Confirmar contraseña" required>
                 <button id="btnRegistrarse">Registrarse</button>
-                <p id="modal-text">Ya tienes usuario? <a id="login-btn">Iniciar Sesión</a></p>
+                <p id="modal-text">¿Ya tienes usuario? <a id="login-btn" href="#">Iniciar Sesión</a></p>
             </div>
         </div>
+        
     </main>
     <footer>
         <div id="cont-footer">
@@ -118,7 +129,8 @@
             <p id="footer">ZapaticosCorp</p>
         </div>
     </footer>
-    <script src="./js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
+
 </body>
 
 </html>
