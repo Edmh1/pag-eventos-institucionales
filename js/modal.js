@@ -12,7 +12,8 @@ function closeModal() {
 
 function setupModals() {
     document.addEventListener("click", (e) => {
-        if (e.target.id === "ingresar") openModal("login");
+        if (e.target.id === "ingresar") 
+            openModal("login");
     });
 
     document.querySelectorAll(".close, .close-register").forEach(btn =>

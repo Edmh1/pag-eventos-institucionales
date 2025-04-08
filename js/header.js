@@ -1,6 +1,9 @@
+import { openModal } from './modal.js';
+
 function updateHeader() {
     const header = document.querySelector("header");
     const userType = localStorage.getItem("userType") || "guest";
+    const admin = localStorage.getItem("admin") === "true" || false;
     const username = localStorage.getItem("username");
 
     let html = `
@@ -14,10 +17,10 @@ function updateHeader() {
         html += `
             <div id="cont-user" class="user-header">
                 <button id="mis-eventos" class="button-header">Mis Eventos</button>
-                ${userType === "admin" ? `<button id="crear-evento" class="button-header">Crear Evento</button>` : ""}
+                ${(admin) ? `<button id="crear-evento" class="button-header">Crear Evento</button>` : ""}
                 <button id="cerrar-sesion" class="button-header">Cerrar Sesión</button>
                 <img src="./resources/img/user-solid.svg" alt="Usuario" id="user-pic">
-                <span>${username}</span>
+                <span style="color: white;">${username}</span>
             </div>
         `;
     }
@@ -26,7 +29,7 @@ function updateHeader() {
 
     document.getElementById("cerrar-sesion")?.addEventListener("click", logout);
     document.getElementById("ingresar")?.addEventListener("click", () => {
-        import('./modal.js').then(module => module.openModal("login"));
+        openModal("login")
     });
 }
 

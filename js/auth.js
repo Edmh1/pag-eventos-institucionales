@@ -1,5 +1,7 @@
 import { closeModal, resetRegisterForm } from './modal.js';
 import { updateHeader } from './header.js';
+import { login, registrarEstudiante, registrarFuncionario } from './usuarioApi.js';
+
 
 function setupAuth() {
     document.getElementById("register-btn").addEventListener("click", () => switchForms("login", "register"));
@@ -8,9 +10,53 @@ function setupAuth() {
     document.getElementById("tipo-usuario").addEventListener("change", toggleUserFields);
     document.getElementById("btnIngresar").addEventListener("click", loginUser);
     document.getElementById("btnRegistrarse").addEventListener("click", () => {
-        alert("Registro exitoso (simulado)");
+        registerUser();
         switchForms("register", "login");
     });
+}
+
+function registerUser() {
+    const tipo = document.getElementById("tipo-usuario").value;
+    const data = {
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        codigo: document.getElementById("codigo").value,
+        email: document.getElementById("email").value,
+        contrasena: document.getElementById("contrasena").value,
+        tipo: tipo
+    };
+
+    if(!data.nombre || !data.apellido || !data.codigo || !data.email || !data.contrasena || !tipo) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor, completa todos los campos.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+          }); 
+          
+        return;
+    }
+
+    if (data.contrasena !== document.getElementById("confirmar-contrasena").value) {
+        Swal.fire({
+            icon: "info",
+            title: "Las contraseñas no coinciden",
+            text: "Las contraseñas no coinciden, por favor verifica.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+          });
+        return;
+    }
+
+    if (tipo === "estudiante") {
+        data.programa = document.getElementById("programa-estudiante").value;
+        registrarEstudiante(data);
+    } else if (tipo === "funcionario") {
+        data.cargo = document.getElementById("cargo-funcionario").value;
+        registrarFuncionario(data);
+    }
+    
 }
 
 function switchForms(hideId, showId) {
@@ -41,19 +87,17 @@ function toggleUserFields() {
     document.getElementById("cargo-funcionario").style.display = tipo === "funcionario" ? "block" : "none";
 }
 
-function loginUser() {
-    const user = document.getElementById("email-user").value;
-    const pass = document.getElementById("password-user").value;
+async function loginUser() {
 
-    if ((user === "admin" && pass === "admin") || (user === "user" && pass === "user")) {
-        const role = user === "admin" ? "admin" : "user";
-        localStorage.setItem("userType", role);
-        localStorage.setItem("username", user);
-        updateHeader();
-        closeModal();
-    } else {
-        alert("Credenciales incorrectas.");
-    }
+    const data = {
+        email: document.getElementById("email-user").value,
+        contrasena: document.getElementById("contrasena-user").value
+    };
+
+    await login(data);
+    updateHeader();
+    closeModal();
+   
 }
 
 export { setupAuth };
