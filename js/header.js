@@ -1,4 +1,3 @@
-import { openModal } from './modal.js';
 
 function updateHeader() {
     const header = document.querySelector("header");
@@ -28,9 +27,6 @@ function updateHeader() {
     header.innerHTML = html;
 
     document.getElementById("cerrar-sesion")?.addEventListener("click", logout);
-    document.getElementById("ingresar")?.addEventListener("click", () => {
-        openModal("login")
-    });
 }
 
 function logout() {
