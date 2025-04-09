@@ -74,26 +74,36 @@ async function login(data) {
             body: JSON.stringify(data)
         });
 
+        const responseText = await response.text();
+
         if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error || "Error al iniciar sesión");
+            // Intentamos parsear el texto a JSON si se puede
+            let message = responseText;
+            try {
+                const json = JSON.parse(responseText);
+                message = json.info || JSON.stringify(json);
+            } catch (e) {
+                // No es JSON, dejamos el texto tal cual
+            }
+
+            throw new Error(message);
         }
 
-        const userData = await response.json();
-        
+        const userData = JSON.parse(responseText);
         localStorage.setItem("userType", userData.tipoUsuario);
         localStorage.setItem("admin", userData.admin);
         localStorage.setItem("username", userData.nombreUsuario);
+
     } catch (error) {
-        const errorInfo = error.message;
         Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: errorInfo.info===undefined ? errorInfo : errorInfo.info,
+            text: error.message,
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#3085d6",
-          });
+        });
     }
 }
+
 
 export { registrarEstudiante, registrarFuncionario, login };
