@@ -75,7 +75,7 @@ async function login(data) {
         });
 
         if (!response.ok) {
-            const error = await response.text();
+            const error = await response.json();
             throw new Error(error || "Error al iniciar sesión");
         }
 
@@ -85,11 +85,11 @@ async function login(data) {
         localStorage.setItem("admin", userData.admin);
         localStorage.setItem("username", userData.nombreUsuario);
     } catch (error) {
-        const errorInfo = JSON.parse(error.message);
+        const errorInfo = error.message;
         Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: errorInfo.info,
+            text: errorInfo.info===undefined ? errorInfo : errorInfo.info,
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#3085d6",
           });
