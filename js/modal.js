@@ -35,5 +35,20 @@ function hideLoader() {
     document.getElementById("loader").style.display = "none";
 }
 
+function loadView(nameView) {
+    fetch(`${nameView}.html`)
+      .then(res => {
+        if (!res.ok) throw new Error("No se pudo cargar la vista");
+        return res.text();
+      })
+      .then(html => {
+        document.getElementsByTagName("main")[0].innerHTML = html;
+      })
+      .catch(error => {
+        document.getElementByTagName("main")[0].innerHTML = "<p>Error al cargar la vista.</p>";
+        console.error(error);
+    });
+}
+  
 
-export { openModal, closeModal, setupModals, resetRegisterForm, showLoader, hideLoader };
+export { openModal, closeModal, setupModals, resetRegisterForm, showLoader, hideLoader, loadView};

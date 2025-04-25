@@ -10,7 +10,7 @@
 }
 
 /*Estos son los estilos generales de la página*/
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -22,7 +22,7 @@ body{
 }
 
 /*Estos son los estilos del header*/
-header{
+header {
     display: flex;
     border-bottom: 1px solid #ccc;
     gap: 20px;
@@ -31,31 +31,31 @@ header{
     border-bottom: 2px solid #c08e2d;
 }
 
-#logo{
+#logo {
     width: 100px;
     height: 100px;
 }
 
-#cont-nombre-institucion{
+#cont-nombre-institucion {
     display: flex;
     align-items: center;
     font-family: 'Leelwadee', sans-serif;
-    color:white;
+    color: white;
 }
 
-#cont-ingresar{
+#cont-ingresar {
     display: flex;
     width: 150px;
     margin-left: auto;
-   align-items: center;
+    align-items: center;
 }
 
 #cont-ingresar a {
-    display: block; 
-    width: 100%; 
+    display: block;
+    width: 100%;
 }
 
-#ingresar{
+#ingresar {
     width: 100%;
     height: 40px;
     font-family: 'Leelwadee', sans-serif;
@@ -68,7 +68,7 @@ header{
 }
 
 /*Estos son los estilos del contenido principal*/
-main{
+main {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -76,31 +76,31 @@ main{
     margin-bottom: 10%;
 }
 
-#cont-titulo{
+#cont-titulo {
     text-align: center;
 }
 
-#titulo{
+#titulo {
     font-family: 'Open-Sans-Bold', sans-serif;
     font-size: 30px;
     font-weight: 700;
     color: #003A6B;
 }
 
-.user-header{
+.user-header {
     display: flex;
     align-items: center;
-    gap: 20px; 
+    gap: 20px;
     margin-left: auto;
 }
 
-.user-header img{
+.user-header img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
 
-.button-header{
+.button-header {
     width: 100%;
     height: 40px;
     padding: 0 30px;
@@ -115,28 +115,28 @@ main{
     transition: background-color 0.3s ease;
 }
 
-.button-header:hover{
+.button-header:hover {
     background-color: #6194c1;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
 }
 
-#cont-buscador{
+#cont-buscador {
     text-align: right;
 }
 
-#buscador{
+#buscador {
     font-family: inherit;
     width: 300px;
     height: 40px;
     padding: 0 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;   
+    border: 1px solid #ccc;
 }
 
-#buscador:focus{
+#buscador:focus {
     border: 1px solid #337ab7;
-    outline:none;
+    outline: none;
 }
 
 #cont-eventos {
@@ -152,7 +152,8 @@ main{
     width: 100%;
     height: 200px;
     height: auto;
-    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro translúcido */
+    background: rgba(0, 0, 0, 0.7);
+    /* Fondo oscuro translúcido */
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -185,7 +186,7 @@ main{
     margin: 3px 0;
 }
 
-.cajita-evento:hover{
+.cajita-evento:hover {
     background-color: #323a45;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     transform: scale(1.02);
@@ -298,27 +299,82 @@ main{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-  }
-  
-  .spinner {
+}
+
+.spinner {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #3498db;
     border-radius: 50%;
     width: 60px;
     height: 60px;
     animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* perfil*/
+.perfil-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.perfil-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.perfil-imagen {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.5rem;
+    border: 2px solid #ccc;
+}
+
+.perfil-info h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+}
+
+.perfil-info p {
+    margin: 0.2rem 0;
+    color: #555;
+}
+
+.perfil-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.perfil-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.perfil-links a:hover {
+    text-decoration: underline;
+}
 
 /*Estos son los estilos del footer*/
 footer {
@@ -344,15 +400,15 @@ footer {
     #cont-nombre-institucion {
         display: none;
     }
-    
+
     #cont-buscador {
         text-align: center;
         display: flex;
-        justify-content: center; 
+        justify-content: center;
     }
 
     #buscador {
-        width: 90%; 
+        width: 90%;
         max-width: 300px;
     }
 
@@ -372,13 +428,13 @@ footer {
 }
 
 .flip-out-hor-top {
-	-webkit-animation: flip-out-hor-top 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: flip-out-hor-top 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    -webkit-animation: flip-out-hor-top 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: flip-out-hor-top 0.45s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 .flip-in-hor-bottom {
-	-webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-hor-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 /* ----------------------------------------------
@@ -393,32 +449,35 @@ footer {
  * animation flip-out-hor-top
  * ----------------------------------------
  */
- @-webkit-keyframes flip-out-hor-top {
+@-webkit-keyframes flip-out-hor-top {
     0% {
-      -webkit-transform: rotateX(0);
-              transform: rotateX(0);
-      opacity: 1;
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
     }
-    100% {
-      -webkit-transform: rotateX(70deg);
-              transform: rotateX(70deg);
-      opacity: 0;
-    }
-  }
-  @keyframes flip-out-hor-top {
-    0% {
-      -webkit-transform: rotateX(0);
-              transform: rotateX(0);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: rotateX(70deg);
-              transform: rotateX(70deg);
-      opacity: 0;
-    }
-  }
 
-  /* ----------------------------------------------
+    100% {
+        -webkit-transform: rotateX(70deg);
+        transform: rotateX(70deg);
+        opacity: 0;
+    }
+}
+
+@keyframes flip-out-hor-top {
+    0% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotateX(70deg);
+        transform: rotateX(70deg);
+        opacity: 0;
+    }
+}
+
+/* ----------------------------------------------
  * Generated by Animista on 2025-4-2 20:58:19
  * Licensed under FreeBSD License.
  * See http://animista.net/license for more info. 
@@ -432,27 +491,28 @@ footer {
  */
 @-webkit-keyframes flip-in-hor-bottom {
     0% {
-      -webkit-transform: rotateX(80deg);
-              transform: rotateX(80deg);
-      opacity: 0;
+        -webkit-transform: rotateX(80deg);
+        transform: rotateX(80deg);
+        opacity: 0;
     }
+
     100% {
-      -webkit-transform: rotateX(0);
-              transform: rotateX(0);
-      opacity: 1;
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
     }
-  }
-  @keyframes flip-in-hor-bottom {
+}
+
+@keyframes flip-in-hor-bottom {
     0% {
-      -webkit-transform: rotateX(80deg);
-              transform: rotateX(80deg);
-      opacity: 0;
+        -webkit-transform: rotateX(80deg);
+        transform: rotateX(80deg);
+        opacity: 0;
     }
+
     100% {
-      -webkit-transform: rotateX(0);
-              transform: rotateX(0);
-      opacity: 1;
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
     }
-  }
-  
-  
+}

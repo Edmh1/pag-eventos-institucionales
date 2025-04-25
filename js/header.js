@@ -1,9 +1,12 @@
+import { loadView } from "./modal.js";
 
 function updateHeader() {
     const header = document.querySelector("header");
     const userType = localStorage.getItem("userType") || "guest";
     const admin = localStorage.getItem("admin") === "true" || false;
     const username = localStorage.getItem("username");
+    const rutaImg = localStorage.getItem("rutaImg") || "resources/img/user-solid.svg";
+
 
     let html = `
         <div id="cont-logo"><img id="logo" src="resources/img/logo-umagdalena.svg" alt="Logo"></div>
@@ -18,16 +21,20 @@ function updateHeader() {
                 <button id="mis-eventos" class="button-header">Mis Eventos</button>
                 ${(admin) ? `<button id="crear-evento" class="button-header">Crear Evento</button>` : ""}
                 <button id="cerrar-sesion" class="button-header">Cerrar Sesión</button>
-                <img src="./resources/img/user-solid.svg" alt="Usuario" id="user-pic">
+                <img src="${rutaImg}" alt="Usuario" id="user-pic">
                 <span style="color: white;">${username}</span>
             </div>
         `;
     }
-
+    
     header.innerHTML = html;
-
+    
     document.getElementById("cerrar-sesion")?.addEventListener("click", logout);
+    var img = document.getElementById("user-pic")?.addEventListener("click", () => {
+        loadView("perfil");
+    });
 }
+
 
 function logout() {
     localStorage.clear();
