@@ -54,14 +54,24 @@ function loadView(nameView) {
 function actualizarPerfil() {
     const username = localStorage.getItem("username");
     const email = localStorage.getItem("email");
-    const rutaImg = localStorage.getItem("rutaImg") === "NULL" ? "resources/img/user-solid.svg" : localStorage.getItem("rutaImg");
+    const rutaImg = localStorage.getItem("rutaImg") === "null" ? "resources/img/user-solid.svg" : localStorage.getItem("rutaImg");
 
     // Actualizamos los datos en la vista de perfil
     document.querySelector(".perfil-imagen").src = rutaImg;  // Imagen
     document.querySelector(".perfil-info h2").textContent = username;  // Nombre
     document.querySelector(".perfil-info p").textContent = email;  // Correo
+
+    document.getElementById("mod-cam-con").addEventListener("click", (e) => {
+        e.preventDefault();
+        modalCamCon();
+    });
+}
+
+function modalCamCon(){
+    openModal("cambiar-con");
+    setupModals();
 }
 
   
 
-export { openModal, closeModal, setupModals, resetRegisterForm, showLoader, hideLoader, loadView};
+export {closeModal, setupModals, resetRegisterForm, showLoader, hideLoader, loadView};

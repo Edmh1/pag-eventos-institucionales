@@ -395,7 +395,7 @@ main {
 .perfil-links a:hover {
     color: #0056b3;
     text-decoration: underline;
-    transform: translateX(5px); /* Desplazamiento sutil cuando se pasa el ratón */
+    transform: scale(1.1);
 }
 
 .perfil-eliminar {

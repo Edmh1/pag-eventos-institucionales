@@ -39,7 +39,24 @@ function updateHeader() {
 
 function logout() {
     localStorage.clear();
-    updateHeader();
+    Swal.fire({
+        title: "¿Estas seguro que quieres cerrar sesión?",
+        icon: "info",
+        focusConfirm: false,
+
+        showCloseButton: true,
+        showDenyButton: true,
+
+        confirmButtonText: `Si`,
+        denyButtonText: `No`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            location.reload();
+        } else if (result.isDenied) {
+          
+        }
+    });
 }
 
 export { updateHeader };
