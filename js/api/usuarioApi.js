@@ -1,5 +1,5 @@
 import { API_USER_LOGIN, API_USER_REGISTER, API_USER_UPDATE } from './api.js';
-import {showLoader, hideLoader} from './modal.js'
+import {showLoader, hideLoader} from '../modal.js'
 
 async function registrarEstudiante(data) {
     try {

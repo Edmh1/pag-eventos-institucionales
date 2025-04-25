@@ -1,4 +1,4 @@
-const PRO = false; // true = TOMCAT EXTERNO || false = TOMCAT EMBEBIDO
+const PRO = true; // true = TOMCAT EXTERNO || false = TOMCAT EMBEBIDO
 
 const API_BASE_URL = "https://pag-eventos-institucionales-back.onrender.com";
 const API_BASE_URL_PRUEBA = "http://localhost:8080";

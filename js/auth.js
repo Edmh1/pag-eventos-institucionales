@@ -1,6 +1,6 @@
 import { closeModal, resetRegisterForm } from './modal.js';
 import { updateHeader } from './header.js';
-import { login, registrarEstudiante, registrarFuncionario } from './usuarioApi.js';
+import { login, registrarEstudiante, registrarFuncionario } from './api/usuarioApi.js';
 
 
 function setupAuth() {

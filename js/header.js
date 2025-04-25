@@ -6,7 +6,7 @@ function updateHeader() {
     const admin = localStorage.getItem("admin") === "true" || false;
     const username = localStorage.getItem("username");
     let rutaImg = localStorage.getItem("rutaImg");
-    rutaImg = rutaImg === "NULL" ? "resources/img/user-solid.svg" : rutaImg;
+    rutaImg = rutaImg === "null" ? "resources/img/user-solid.svg" : rutaImg;
 
 
     let html = `
