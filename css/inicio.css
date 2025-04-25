@@ -73,7 +73,6 @@ main {
     flex-direction: column;
     gap: 20px;
     padding: 10px 15%;
-    margin-bottom: 10%;
 }
 
 #cont-titulo {
@@ -98,6 +97,10 @@ main {
     width: 70px;
     height: 70px;
     border-radius: 50%;
+}
+
+#user-pic:hover {
+    cursor: pointer;
 }
 
 .button-header {
@@ -325,60 +328,125 @@ main {
     }
 }
 
-/* perfil*/
+/* Perfil */
 .perfil-container {
-    max-width: 600px;
-    margin: auto;
+    background-color: #dad5d5; /* Fondo más claro para un look moderno */
     padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+    max-width: 320px;
+    width: 100%;
+    margin: 2rem auto;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Fuente más moderna */
 }
 
 .perfil-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .perfil-imagen {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 1.5rem;
-    border: 2px solid #ccc;
+    border: 4px solid #007bff;
+    transition: transform 0.3s ease-in-out; /* Efecto de transformación al hacer hover */
+    margin-bottom: 1rem;
+}
+
+.perfil-imagen:hover {
+    transform: scale(1.1); /* Aumentar la imagen cuando se pasa el ratón */
 }
 
 .perfil-info h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.8rem;
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .perfil-info p {
     margin: 0.2rem 0;
-    color: #555;
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
 }
 
 .perfil-links {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .perfil-links a {
     color: #007bff;
     text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .perfil-links a:hover {
+    color: #0056b3;
     text-decoration: underline;
+    transform: translateX(5px); /* Desplazamiento sutil cuando se pasa el ratón */
 }
+
+.perfil-eliminar {
+    background-color: #dc3545;
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 80%; /* Mejor tamaño del botón */
+    margin: 1rem auto;
+}
+
+.perfil-eliminar:hover {
+    background-color: #c82333;
+    transform: scale(1.05); /* Aumenta el tamaño del botón al pasar el ratón */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .perfil-container {
+        padding: 1.5rem;
+    }
+
+    .perfil-imagen {
+        width: 90px;
+        height: 90px;
+    }
+
+    .perfil-info h2 {
+        font-size: 1.6rem;
+    }
+
+    .perfil-links a {
+        font-size: 1rem;
+    }
+
+    .perfil-eliminar {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+
 
 /*Estos son los estilos del footer*/
 footer {
-    margin-top: auto;
+    margin-top: 2em;
     height: 150px;
     background-color: #004a87;
     width: 100%;

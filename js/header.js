@@ -5,7 +5,8 @@ function updateHeader() {
     const userType = localStorage.getItem("userType") || "guest";
     const admin = localStorage.getItem("admin") === "true" || false;
     const username = localStorage.getItem("username");
-    const rutaImg = localStorage.getItem("rutaImg") || "resources/img/user-solid.svg";
+    let rutaImg = localStorage.getItem("rutaImg");
+    rutaImg = rutaImg === "NULL" ? "resources/img/user-solid.svg" : rutaImg;
 
 
     let html = `
@@ -30,7 +31,7 @@ function updateHeader() {
     header.innerHTML = html;
     
     document.getElementById("cerrar-sesion")?.addEventListener("click", logout);
-    var img = document.getElementById("user-pic")?.addEventListener("click", () => {
+    document.getElementById("user-pic")?.addEventListener("click", () => {
         loadView("perfil");
     });
 }

@@ -1,5 +1,4 @@
 import { API_USER_LOGIN, API_USER_REGISTER } from './api.js';
-import { updateHeader } from './header.js';
 import {showLoader, hideLoader} from './modal.js'
 
 async function registrarEstudiante(data) {
@@ -102,6 +101,7 @@ async function login(data) {
         localStorage.setItem("userType", userData.tipoUsuario);
         localStorage.setItem("admin", userData.admin);
         localStorage.setItem("username", userData.nombreUsuario);
+        localStorage.setItem("email", userData.emailUsuario);
         localStorage.setItem("rutaImg", userData.rutaImg);
 
     } catch (error) {
@@ -114,7 +114,6 @@ async function login(data) {
         });
     }finally{
         hideLoader();
-        updateHeader();
     }
 }
 

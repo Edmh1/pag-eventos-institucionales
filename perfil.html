@@ -1,15 +1,19 @@
 <div class="perfil-container">
-    <div class="perfil-header">
-      <img src="img/usuario.png" alt="Foto de perfil" class="perfil-imagen">
-      <div class="perfil-info">
-        <h2>Juan Pérez</h2>
-        <p>juan.perez@email.com</p>
-        <p>Contraseña: ●●●●●●●●</p>
-      </div>
+  <a href="" class="perfil-volver">
+    <i class="fas fa-arrow-left"></i> Volver
+  </a>
+  <div class="perfil-header">
+    <img src="resources/img/user-solid.svg" alt="Foto de perfil de Juan Pérez" class="perfil-imagen">
+    <div class="perfil-info">
+      <h2>Juan Pérez</h2>
+      <p>juan.perez@email.com</p>
     </div>
-  
-    <div class="perfil-links">
-      <a href="#" onclick="cambiarContrasena()">Cambiar contraseña</a>
-      <a href="#" onclick="eliminarCuenta()">Eliminar cuenta</a>
-    </div>
+  </div>
+
+  <div class="perfil-links">
+    <a href="#" onclick="cambiarImagen()">Cambiar Imagen</a>
+    <a href="#" onclick="cambiarContrasena()">Cambiar Contraseña</a>
+    <button class="perfil-eliminar" onclick="eliminarCuenta()">Eliminar Cuenta</button>
+  </div>
+
 </div>

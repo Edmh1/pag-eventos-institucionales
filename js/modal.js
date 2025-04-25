@@ -43,12 +43,25 @@ function loadView(nameView) {
       })
       .then(html => {
         document.getElementsByTagName("main")[0].innerHTML = html;
+        actualizarPerfil(); 
       })
       .catch(error => {
-        document.getElementByTagName("main")[0].innerHTML = "<p>Error al cargar la vista.</p>";
+        document.getElementsByTagName("main")[0].innerHTML = "<p>Error al cargar la vista.</p>";
         console.error(error);
     });
 }
+
+function actualizarPerfil() {
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
+    const rutaImg = localStorage.getItem("rutaImg") === "NULL" ? "resources/img/user-solid.svg" : localStorage.getItem("rutaImg");
+
+    // Actualizamos los datos en la vista de perfil
+    document.querySelector(".perfil-imagen").src = rutaImg;  // Imagen
+    document.querySelector(".perfil-info h2").textContent = username;  // Nombre
+    document.querySelector(".perfil-info p").textContent = email;  // Correo
+}
+
   
 
 export { openModal, closeModal, setupModals, resetRegisterForm, showLoader, hideLoader, loadView};
