@@ -27,4 +27,13 @@ function resetRegisterForm() {
     document.getElementById("cargo-funcionario").style.display = "none";
 }
 
-export { openModal, closeModal, setupModals, resetRegisterForm };
+function showLoader() {
+    document.getElementById("loader").style.display = "flex";
+}
+
+function hideLoader() {
+    document.getElementById("loader").style.display = "none";
+}
+
+
+export { openModal, closeModal, setupModals, resetRegisterForm, showLoader, hideLoader };

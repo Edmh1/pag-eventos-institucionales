@@ -1,7 +1,9 @@
 import { API_USER_LOGIN, API_USER_REGISTER } from './api.js';
+import {showLoader, hideLoader} from './modal.js'
 
 async function registrarEstudiante(data) {
     try {
+        showLoader();
         const response = await fetch(API_USER_REGISTER + "/estudiante", {
             method: "POST",
             headers: {
@@ -29,11 +31,14 @@ async function registrarEstudiante(data) {
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#3085d6",
           });
+    }finally{
+        hideLoader();
     }
 }
 
 async function registrarFuncionario(data) {
     try {
+        showLoader();
         const response = await fetch(API_USER_REGISTER + "/funcionario", {
             method: "POST",
             headers: {
@@ -61,11 +66,14 @@ async function registrarFuncionario(data) {
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#3085d6",
           });
+    }finally{
+        hideLoader();
     }
 }
 
 async function login(data) {
     try {
+        showLoader();
         const response = await fetch(API_USER_LOGIN, {
             method: "POST",
             headers: {
@@ -102,6 +110,8 @@ async function login(data) {
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#3085d6",
         });
+    }finally{
+        hideLoader();
     }
 }
 
