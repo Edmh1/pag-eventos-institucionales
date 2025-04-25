@@ -1,4 +1,4 @@
-import { API_USER_LOGIN, API_USER_REGISTER } from './api.js';
+import { API_USER_LOGIN, API_USER_REGISTER, API_USER_UPDATE } from './api.js';
 import {showLoader, hideLoader} from './modal.js'
 
 async function registrarEstudiante(data) {
@@ -117,5 +117,51 @@ async function login(data) {
     }
 }
 
+async function actualizarContrasena(data) {
+    try {
+        showLoader();
+        const response = await fetch(API_USER_UPDATE + "/contrasena", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
-export { registrarEstudiante, registrarFuncionario, login };
+        const responseText = await response.text();
+
+        if (!response.ok) {
+            let message = responseText;
+            try {
+                const json = JSON.parse(responseText);
+                message = json.info || JSON.stringify(json);
+            } catch (e) {
+                // No es JSON, se mantiene el texto crudo
+            }
+            throw new Error(message);
+        }
+
+        const result = JSON.parse(responseText);
+
+        Swal.fire({
+            title: "¡Contraseña actualizada!",
+            text: result.info || "Tu contraseña se actualizó correctamente.",
+            icon: "success"
+        });
+
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message,
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+        });
+    } finally {
+        hideLoader();
+    }
+}
+
+
+
+export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena };

@@ -9,4 +9,6 @@ const API_USER = API_URL + "/usuarios";
 const API_USER_LOGIN = API_USER + "/login";
 const API_USER_REGISTER = API_USER + "/registro";
 
-export {API_USER_REGISTER, API_USER_LOGIN};
+const API_USER_UPDATE = API_USER + "/actualizar";
+
+export {API_USER_REGISTER, API_USER_LOGIN, API_USER_UPDATE};
