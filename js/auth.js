@@ -1,6 +1,6 @@
-import { closeModal, resetRegisterForm } from './modal.js';
+import { closeAndResetModal } from './modal.js';
 import { updateHeader } from './header.js';
-import { login, registrarEstudiante, registrarFuncionario } from './api/usuarioApi.js';
+import { login, registrarEstudiante, registrarFuncionario, actualizarContrasena } from './api/usuarioApi.js'
 
 
 function setupAuth() {
@@ -14,6 +14,38 @@ function setupAuth() {
         switchForms("register", "login");
     });
 }
+
+function toggleUserFields() {
+    const tipo = document.getElementById("tipo-usuario").value;
+    document.getElementById("programa-estudiante").style.display = tipo === "estudiante" ? "block" : "none";
+    document.getElementById("cargo-funcionario").style.display = tipo === "funcionario" ? "block" : "none";
+}
+
+function switchForms(hideId, showId) {
+    const hideForm = document.getElementById(hideId);
+    const showForm = document.getElementById(showId);
+
+    hideForm.classList.add("flip-out-hor-top");
+    hideForm.addEventListener("animationend", function onHideEnd() {
+        hideForm.classList.remove("flip-out-hor-top");
+        hideForm.style.display = "none";
+
+        showForm.style.display = "block";
+        showForm.classList.add("flip-in-hor-bottom");
+        showForm.addEventListener("animationend", function onShowEnd() {
+            showForm.classList.remove("flip-in-hor-bottom");
+            showForm.removeEventListener("animationend", onShowEnd);
+        });
+
+        hideForm.removeEventListener("animationend", onHideEnd);
+    });
+
+    // Esto es para resetear solo si estamos ocultando "register"
+    if (hideId === "register") {
+        resetForm("register");
+    }
+}
+
 
 function registerUser() {
     const tipo = document.getElementById("tipo-usuario").value;
@@ -59,36 +91,8 @@ function registerUser() {
     
 }
 
-function switchForms(hideId, showId) {
-    const hideForm = document.getElementById(hideId);
-    const showForm = document.getElementById(showId);
-
-    hideForm.classList.add("flip-out-hor-top");
-    hideForm.addEventListener("animationend", function onHideEnd() {
-        hideForm.classList.remove("flip-out-hor-top");
-        hideForm.style.display = "none";
-
-        showForm.style.display = "block";
-        showForm.classList.add("flip-in-hor-bottom");
-        showForm.addEventListener("animationend", function onShowEnd() {
-            showForm.classList.remove("flip-in-hor-bottom");
-            showForm.removeEventListener("animationend", onShowEnd);
-        });
-
-        hideForm.removeEventListener("animationend", onHideEnd);
-    });
-
-    resetRegisterForm();
-}
-
-function toggleUserFields() {
-    const tipo = document.getElementById("tipo-usuario").value;
-    document.getElementById("programa-estudiante").style.display = tipo === "estudiante" ? "block" : "none";
-    document.getElementById("cargo-funcionario").style.display = tipo === "funcionario" ? "block" : "none";
-}
 
 async function loginUser() {
-
     const data = {
         email: document.getElementById("email-user").value,
         contrasena: document.getElementById("contrasena-user").value
@@ -96,8 +100,19 @@ async function loginUser() {
 
     await login(data);
     updateHeader();
-    closeModal();
-   
+    closeAndResetModal("register");
+    closeAndResetModal("login");  
 }
 
-export { setupAuth };
+
+async function camContrasena() {
+    const data = {
+        contrasenaActual: document.getElementById("contrasena-user-actual").value,
+        contrasenaNueva: document.getElementById("contrasena-user-nueva").value
+    };
+    
+    await actualizarContrasena(data);
+    closeAndResetModal("cambiar-con");
+}
+
+export { setupAuth, camContrasena };

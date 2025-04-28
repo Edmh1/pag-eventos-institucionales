@@ -120,6 +120,8 @@ async function login(data) {
 async function actualizarContrasena(data) {
     try {
         showLoader();
+        const email = localStorage.getItem("email");
+        data.email = email;
         const response = await fetch(API_USER_UPDATE + "/contrasena", {
             method: "PUT",
             headers: {
@@ -164,4 +166,4 @@ async function actualizarContrasena(data) {
 
 
 
-export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena };
+export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena};

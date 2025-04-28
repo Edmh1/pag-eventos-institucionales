@@ -94,7 +94,7 @@
         <div id="modal" class="modal" style="display: none;">
             <!-- Modal Login -->
             <div id="login" class="modal-content modal-login">
-                <span class="close">&times;</span>
+                <span class="close" data-close-form="login">&times;</span>
                 <h2>Iniciar Sesión</h2>
                 <input type="email" id="email-user" placeholder="Email" required>
                 <input type="password" id="contrasena-user" placeholder="Contraseña">
@@ -104,7 +104,7 @@
         
             <!-- Modal Registro -->
             <div id="register" class="modal-content modal-register">
-                <span class="close-register">&times;</span>
+                <span class="close-register" data-close-form="register">&times;</span>
                 <h2>Regístrate</h2>
                 <select name="tipo-usuario" id="tipo-usuario" required>
                     <option value="" disabled selected>Selecciona Tipo</option>
@@ -123,12 +123,12 @@
                 <p id="modal-text">¿Ya tienes usuario? <a id="login-btn" href="#">Iniciar Sesión</a></p>
             </div>
         </div>
-        
-        <div id="loader" style="display: none;">
-            <div class="spinner"></div>
-        </div>
           
     </main>
+    <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
     <footer>
         <div id="cont-footer">
             <p id="footer">Universidad del Magdalena - Todos los derechos reservados</p>
