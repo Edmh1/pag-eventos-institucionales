@@ -90,10 +90,10 @@ function registerUser() {
     }
 
     if (tipo === "estudiante") {
-        data.programa = document.getElementById("programa-estudiante").value;
+        data.idPrograma = document.getElementById("programa-estudiante").value;
         registrarEstudiante(data);
     } else if (tipo === "funcionario") {
-        data.cargo = document.getElementById("cargo-funcionario").value;
+        data.idCargo = document.getElementById("cargo-funcionario").value;
         registrarFuncionario(data);
     }
     
