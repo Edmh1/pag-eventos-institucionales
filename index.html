@@ -115,8 +115,12 @@
                 <input id="apellido" type="text" placeholder="Apellido">
                 <input id="codigo" type="text" placeholder="Código" required>
                 <input id="email" type="text" placeholder="Email" required>
-                <input id="programa-estudiante" type="text" placeholder="Programa" style="display: none;">
-                <input id="cargo-funcionario" type="text" placeholder="Cargo" style="display: none;">
+                <select id="programa-estudiante" style="display: none;">
+                    <option value="" disabled selected>Seleccione un programa</option>
+                </select>
+                <select id="cargo-funcionario" style="display: none;">
+                    <option value="" disabled selected>Seleccione un cargo</option>
+                </select>                
                 <input id="contrasena" type="password" placeholder="Contraseña" required>
                 <input id="confirmar-contrasena" type="password" placeholder="Confirmar contraseña" required>
                 <button id="btnRegistrarse">Registrarse</button>

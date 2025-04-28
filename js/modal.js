@@ -82,4 +82,4 @@ function actualizarPerfil() {
     document.querySelector(".perfil-info p").textContent = email;
 }
 
-export { closeAndResetModal, setupModals, showLoader, hideLoader, loadView };
+export { closeAndResetModal, setupModals, resetForm ,showLoader, hideLoader, loadView };

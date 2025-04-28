@@ -11,4 +11,8 @@ const API_USER_REGISTER = API_USER + "/registro";
 
 const API_USER_UPDATE = API_USER + "/actualizar";
 
-export {API_USER_REGISTER, API_USER_LOGIN, API_USER_UPDATE};
+
+const API_PROGRAM = API_URL + "/programas";
+const API_CARG = API_URL + "/cargos";
+
+export {API_USER_REGISTER, API_USER_LOGIN, API_USER_UPDATE, API_PROGRAM, API_CARG};

@@ -1,6 +1,8 @@
-import { closeAndResetModal } from './modal.js';
+import { closeAndResetModal, resetForm } from './modal.js';
 import { updateHeader } from './header.js';
 import { login, registrarEstudiante, registrarFuncionario, actualizarContrasena } from './api/usuarioApi.js'
+import { cargarProgramas } from './api/programaApi.js';
+import { cargarCargos } from './api/cargoApi.js';
 
 
 function setupAuth() {
@@ -19,6 +21,12 @@ function toggleUserFields() {
     const tipo = document.getElementById("tipo-usuario").value;
     document.getElementById("programa-estudiante").style.display = tipo === "estudiante" ? "block" : "none";
     document.getElementById("cargo-funcionario").style.display = tipo === "funcionario" ? "block" : "none";
+
+    if(tipo === "estudiante"){ 
+        cargarProgramas();
+    }else if(tipo === "funcionario"){
+        cargarCargos();
+    }
 }
 
 function switchForms(hideId, showId) {
