@@ -13,17 +13,28 @@ function closeAndResetModal(formToClose) {
 
 function resetForm(formToReset) {
     if (formToReset === "register") {
-        document.getElementById("tipo-usuario").value = "";
-        document.getElementById("programa-estudiante").style.display = "none";
-        document.getElementById("cargo-funcionario").style.display = "none";
+        const tipoUsuario = document.getElementById("tipo-usuario");
+        const programaEstudiante = document.getElementById("programa-estudiante");
+        const cargoFuncionario = document.getElementById("cargo-funcionario");
+
+        if (tipoUsuario) tipoUsuario.value = "";
+        if (programaEstudiante) programaEstudiante.style.display = "none";
+        if (cargoFuncionario) cargoFuncionario.style.display = "none";
     } else if (formToReset === "cambiar-con") {
-        document.getElementById("contrasena-user-actual").value = "";
-        document.getElementById("contrasena-user-nueva").value = "";
+        const actual = document.getElementById("contrasena-user-actual");
+        const nueva = document.getElementById("contrasena-user-nueva");
+
+        if (actual) actual.value = "";
+        if (nueva) nueva.value = "";
     } else if (formToReset === "login") {
-        document.getElementById("login-user").value = "";
-        document.getElementById("login-password").value = "";
+        const user = document.getElementById("login-user");
+        const pass = document.getElementById("login-password");
+
+        if (user) user.value = "";
+        if (pass) pass.value = "";
     }
 }
+
 
 function setupModals() {
     document.addEventListener("click", (e) => {
