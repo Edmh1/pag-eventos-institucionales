@@ -1,4 +1,4 @@
-import { API_USER_LOGIN, API_USER_REGISTER, API_USER_UPDATE } from './api.js';
+import { API_USER_LOGIN, API_USER_REGISTER, API_USER_UPDATE, API_USER_DELETE } from './api.js';
 import {showLoader, hideLoader} from '../modal.js'
 
 async function registrarEstudiante(data) {
@@ -99,6 +99,7 @@ async function login(data) {
 
         const userData = JSON.parse(responseText);
         localStorage.setItem("userType", userData.tipoUsuario);
+        localStorage.setItem("idUsuario", userData.idUsuario);
         localStorage.setItem("admin", userData.admin);
         localStorage.setItem("username", userData.nombreUsuario);
         localStorage.setItem("email", userData.emailUsuario);
@@ -164,6 +165,53 @@ async function actualizarContrasena(data) {
     }
 }
 
+async function eliminarUsuario() {
+    try {
+        showLoader();
+        const id = localStorage.getItem("idUsuario");
+        const response = await fetch(`${API_USER_DELETE}/${id}`, {
+            method: "DELETE"
+        });
+
+        const responseText = await response.text();
+
+        if (!response.ok) {
+            let message = responseText;
+            try {
+                const json = JSON.parse(responseText);
+                message = json.info || JSON.stringify(json);
+            } catch (e) {
+                // No es JSON, mantener texto plano
+            }
+            throw new Error(message);
+        }
+
+        const result = JSON.parse(responseText);
+
+        hideLoader();
+
+        await Swal.fire({
+            title: "¡Usuario eliminado!",
+            text: result.info || "El usuario se eliminó correctamente.",
+            icon: "success"
+        });
+
+        return true;
+
+    } catch (error) {
+        hideLoader();
+        Swal.fire({
+            icon: "error",
+            title: "Error al eliminar",
+            text: error.message,
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+        });
+        return false;
+    }
+}
 
 
-export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena};
+
+
+export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena, eliminarUsuario};

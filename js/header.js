@@ -59,4 +59,4 @@ function logout() {
     });
 }
 
-export { updateHeader };
+export { updateHeader, logout };
