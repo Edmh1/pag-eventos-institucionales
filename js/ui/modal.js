@@ -1,6 +1,7 @@
 import { camContrasena } from "../auth.js";
 import { eliminarUsuario, actualizarImg } from "../api/usuarioApi.js";
 import { subirImagenAImgur } from "../api/imgur.js";
+import { updateHeader } from "./header.js";
 
 function openModal(formToShow) {
     document.getElementById("modal").style.display = "flex";
@@ -145,16 +146,21 @@ function setupModificarImagen() {
 
         try {
             const url = await subirImagenAImgur(file);
-            Swal.fire({
-                icon: 'success',
-                title: 'Imagen modificada correctamente',
-                text: `URL de la imagen: ${url}`,
-            });
+            if (!url) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo subir la imagen',
+                });
+                return;
+            }
             const data = {
                 url: url,
             };
 
             await actualizarImg(data);
+            localStorage.setItem("rutaImg", url);
+            updateHeader();
             closeAndResetModal("modificar-imagen");
         } catch (err) {
             Swal.fire({
