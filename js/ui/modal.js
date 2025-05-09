@@ -161,6 +161,7 @@ function setupModificarImagen() {
             await actualizarImg(data);
             localStorage.setItem("rutaImg", url);
             updateHeader();
+            actualizarPerfil();
             closeAndResetModal("modificar-imagen");
         } catch (err) {
             Swal.fire({
