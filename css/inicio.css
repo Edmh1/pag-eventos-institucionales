@@ -442,6 +442,36 @@ main {
     }
 }
 
+/*Estilos de paginacion*/
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .page-btn {
+    background-color: #004a87;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .page-btn:hover {
+    background-color: #357ABD;
+  }
+
+  .page-info {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+  }
 
 
 /*Estos son los estilos del footer*/
