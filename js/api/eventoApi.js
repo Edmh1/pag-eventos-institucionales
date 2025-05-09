@@ -1,5 +1,5 @@
 import { API_EVENTO, API_EVENTO_CONTAR } from "./api.js";
-import {showLoader, hideLoader} from '../modal.js'
+import {showLoader, hideLoader} from '../ui/modal.js';
 
 async function obtenerTotalEventos() {
     const ahora = Date.now();

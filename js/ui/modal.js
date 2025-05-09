@@ -1,6 +1,6 @@
-import { camContrasena } from "./auth.js";
-import { eliminarUsuario } from "./api/usuarioApi.js";
-import { logout } from "./header.js";
+import { camContrasena } from "../auth.js";
+import { eliminarUsuario, actualizarImg } from "../api/usuarioApi.js";
+import { subirImagenAImgur } from "../api/imgur.js";
 
 function openModal(formToShow) {
     document.getElementById("modal").style.display = "flex";
@@ -50,6 +50,10 @@ function setupModals() {
         } else if (e.target.id === "mod-eli-cuen"){
             e.preventDefault(); //evita que el link de # haga que recargue la pag
             confirmEliminar();
+        } else if (e.target.id === "mod-img"){
+            e.preventDefault();
+            openModal("modificar-imagen");
+            setupModificarImagen();
         }
     });
 
@@ -119,6 +123,62 @@ async function confirmEliminar() {
         }
     }
 }
+
+function setupModificarImagen() {
+    const form = document.getElementById("formModificarImagen");
+    const input = document.getElementById("nuevaImagen");
+    const imgPreview = document.getElementById("imgPreviewMod");
+
+    if (!form || !input || !imgPreview) return;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const file = input.files[0];
+        if (!file) {
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'Selecciona una imagen',
+            });
+            return;
+        }
+
+        try {
+            const url = await subirImagenAImgur(file);
+            Swal.fire({
+                icon: 'success',
+                title: 'Imagen modificada correctamente',
+                text: `URL de la imagen: ${url}`,
+            });
+            const data = {
+                url: url,
+            };
+
+            await actualizarImg(data);
+            closeAndResetModal("modificar-imagen");
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `Error al subir la imagen: ${err}`,
+            });
+        }
+    });
+
+    input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                imgPreview.src = reader.result;
+                imgPreview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+
 
 
 export { closeAndResetModal, setupModals, resetForm ,showLoader, hideLoader, loadView };

@@ -1,11 +1,11 @@
 import { setupModals } from './modal.js';
-import { setupAuth } from './auth.js';
+import { setupAuth } from '../auth.js';
 import { updateHeader } from './header.js';
-import { setupPage } from './events.js';
+import { setupPage } from '../events.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-    setupPage();
     updateHeader();
+    setupPage();
     setupModals();
     setupAuth();
 });

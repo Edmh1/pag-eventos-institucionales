@@ -11,7 +11,7 @@
   </div>
 
   <div class="perfil-links">
-    <a href="#" onclick="cambiarImagen()">Cambiar Imagen</a>
+    <a href="#" id="mod-img">Cambiar Imagen</a>
     <a href="#" id="mod-cam-con">Cambiar Contraseña</a>
     <button class="perfil-eliminar" id="mod-eli-cuen">Eliminar Cuenta</button>
   </div>
@@ -20,10 +20,25 @@
 <div id="modal" class="modal" style="display: none;">
   <!-- Modal Cambiar contraseña -->
   <div id="cambiar-con" class="modal-content modal-cam-con">
-      <span class="close" data-close-form="cambiar-con">&times;</span>
-      <h2>Ingrese su Contraseña: </h2>
-      <input type="password" id="contrasena-user-actual" placeholder="Actual Contraseña" required>
-      <input type="password" id="contrasena-user-nueva" placeholder="Nueva Contraseña" required>
-      <button id="btnConfirmar-con">Confirmar Contraseña</button>
+    <span class="close" data-close-form="cambiar-con">&times;</span>
+    <h2>Ingrese su Contraseña: </h2>
+    <input type="password" id="contrasena-user-actual" placeholder="Actual Contraseña" required>
+    <input type="password" id="contrasena-user-nueva" placeholder="Nueva Contraseña" required>
+    <button id="btnConfirmar-con">Confirmar Contraseña</button>
   </div>
+
+  <div id="modificar-imagen" class="modal-content" style="display: none;">
+    <span data-close-form="modificar-imagen" class="close">&times;</span>
+    <h2>Modificar Imagen</h2>
+    <form id="formModificarImagen">
+      <input type="file" id="nuevaImagen" accept="image/*" required>
+      <button type="submit">Subir imagen</button>
+    </form>
+    <div id="previewNuevaImagen" style="margin-top: 10px;">
+      <p>Vista previa:</p>
+      <img id="imgPreviewMod" style="max-width: 100%; display: none;">
+    </div>
+
+  </div>
+
 </div>

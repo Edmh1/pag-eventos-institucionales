@@ -1,5 +1,5 @@
 import { API_USER_LOGIN, API_USER_REGISTER, API_USER_UPDATE, API_USER_DELETE } from './api.js';
-import {showLoader, hideLoader} from '../modal.js'
+import {showLoader, hideLoader} from '../ui/modal.js';
 
 async function registrarEstudiante(data) {
     try {
@@ -165,6 +165,53 @@ async function actualizarContrasena(data) {
     }
 }
 
+async function actualizarImg(data) {
+    try {
+        showLoader();
+        const email = localStorage.getItem("email");
+        data.email = email;
+        const response = await fetch(API_USER_UPDATE + "/img", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const responseText = await response.text();
+
+        if (!response.ok) {
+            let message = responseText;
+            try {
+                const json = JSON.parse(responseText);
+                message = json.info || JSON.stringify(json);
+            } catch (e) {
+                // No es JSON, se mantiene el texto crudo
+            }
+            throw new Error(message);
+        }
+
+        const result = JSON.parse(responseText);
+
+        Swal.fire({
+            title: "Imagen actualizada!",
+            text: result.info || "Tu Imagen se actualizó correctamente.",
+            icon: "success"
+        });
+
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message,
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+        });
+    } finally {
+        hideLoader();
+    }
+}
+
 async function eliminarUsuario() {
     try {
         showLoader();
@@ -214,4 +261,4 @@ async function eliminarUsuario() {
 
 
 
-export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena, eliminarUsuario};
+export { registrarEstudiante, registrarFuncionario, login, actualizarContrasena, actualizarImg ,eliminarUsuario};

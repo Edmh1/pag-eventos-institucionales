@@ -1,5 +1,5 @@
-import { closeAndResetModal, resetForm } from './modal.js';
-import { updateHeader } from './header.js';
+import { closeAndResetModal, resetForm } from './ui/modal.js';
+import { updateHeader } from './ui/header.js';
 import { login, registrarEstudiante, registrarFuncionario, actualizarContrasena } from './api/usuarioApi.js'
 import { cargarProgramas } from './api/programaApi.js';
 import { cargarCargos } from './api/cargoApi.js';
