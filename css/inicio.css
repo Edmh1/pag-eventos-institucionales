@@ -801,6 +801,7 @@ footer {
     }
 }
 
+
 @media (min-width: 768px) {
     .grid {
         grid-template-columns: repeat(4, 1fr);
@@ -830,5 +831,14 @@ footer {
         grid-column: 3 / span 2;
         grid-row: 2 / span 2;
     }
+    .item-botones {
+        grid-column: 3 / span 2;
+        grid-row: 2 / span 2;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
 
 }
