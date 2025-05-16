@@ -251,6 +251,7 @@ async function enviarEvento(evento) {
 
 var nombre;
 var lugar;
+var imgUrl;
 
 async function setupMisEventos() {
     console.log("Cargar mis eventos");
@@ -266,6 +267,7 @@ function addEventListenerCajas() {
             loadView("actualizar_evento");
             nombre = document.getElementById("nombre-evento-text").textContent;
             lugar = document.getElementById("lugar-evento-text").textContent;
+            imgUrl = document.getElementById("img-evento").src;
         }
     });
 }
@@ -281,8 +283,40 @@ function setupActualizarEvento() {
 
     const form = document.getElementById("formActualizarEvento");
 
+    uploadBtn.addEventListener("click", function () {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            if (!file.type.startsWith("image/")) {
+                vistaPreviaLabel.textContent = "Por favor, selecciona una imagen válida.";
+                return;
+            }
+            vistaPreviaLabel.style.display = "none";
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+                imgPreview.style.width = "100%";
+                imgPreview.style.height = "auto";
+                imgPreview.style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        const file = fileInput.files[0];
+        if (!file) {
+            vistaPreviaLabel.textContent = "Por favor, selecciona una imagen.";
+            return;
+        }
 
         const nombre = document.getElementById("nombre-evento").value.trim();
         const lugar = document.getElementById("lugar-evento").value.trim();
@@ -295,10 +329,28 @@ function setupActualizarEvento() {
             });
         }
 
+        if (imgUrl !== document.getElementById("imgPreview").src) {
+            let url;
+            try {
+                url = await subirImagenAImgur(file);
+                if (!url) {
+                    vistaPreviaLabel.textContent = "Error al subir la imagen.";
+                    return;
+                }
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo cargar la imagen intente más tarde.',
+                });
+            }
+        }
+
         const evento = {
             nombreEvento: nombre,
             lugarEvento: lugar,
-            idEvento: localStorage.getItem("idEvento")
+            idEvento: localStorage.getItem("idEvento"),
+            imgUrl: url
         };
 
         await updateEvento(evento);

@@ -42,7 +42,7 @@ async function goToPage(page) {
         div.className = "cajita-evento";
         div.id = evento.idEvento;
         div.innerHTML = `
-            <img src="${img}" alt="Evento">
+            <img id="img-evento" src="${img}" alt="Evento">
             <div class="info">
                 <h3 id="nombre-evento-text">${evento.nombreEvento}</h3>
                 <p id="lugar-evento-text">Lugar: ${evento.lugarEvento}</p>
