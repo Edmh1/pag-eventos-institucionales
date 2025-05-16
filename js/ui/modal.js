@@ -196,24 +196,13 @@ function setupCrearEvento() {
             });
         }
 
-
+        let url;
         try {
-            const url = await subirImagenAImgur(file);
+            url = await subirImagenAImgur(file);
             if (!url) {
                 vistaPreviaLabel.textContent = "Error al subir la imagen.";
                 return;
             }
-            const evento = {
-                idTipoEvento: parseInt(tipoEvento),
-                nombreEvento: nombre,
-                lugarEvento: lugar,
-                fechaEvento: fecha,
-                horaEvento: hora,
-                horaFinEvento: horaFin,
-                rutaImgEvento: url
-            };
-            console.log(evento);
-            await enviarEvento(evento);
         } catch (err) {
             Swal.fire({
                 icon: 'error',
@@ -221,6 +210,18 @@ function setupCrearEvento() {
                 text: 'No se pudo cargar la imagen intente más tarde.',
             });
         }
+
+        const evento = {
+            idTipoEvento: tipoEvento,
+            nombreEvento: nombre,
+            lugarEvento: lugar,
+            fechaEvento: fecha,
+            horaEvento: hora,
+            horaFinEvento: horaFin,
+            rutaImgEvento: url
+        };
+            
+        await enviarEvento(evento);
     });
 }
 
@@ -229,7 +230,7 @@ async function enviarEvento(evento) {
 
     try {
         const response = await crearEvento(evento); 
-        if (!response.ok) {
+        if (!response) {
             throw new Error('Error al crear evento');
         }
     } catch (err) {

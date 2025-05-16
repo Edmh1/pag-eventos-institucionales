@@ -49,11 +49,9 @@ async function crearEvento(evento) {
             },
             body: JSON.stringify(evento)
         });
-        console.log(response);
 
         if (!response.ok) {
             const errorText = await response.text();
-            // Intentamos parsear solo si es JSON válido
             try {
                 const errorInfo = JSON.parse(errorText);
                 throw new Error(errorInfo.info || "Error desconocido");
@@ -67,6 +65,8 @@ async function crearEvento(evento) {
             text: "El evento ha sido registrado correctamente.",
             icon: "success"
         });
+
+        return true;
 
     } catch (error) {
         Swal.fire({

@@ -44,7 +44,7 @@ async function goToPage(page) {
             <img src="${img}" alt="Evento">
             <div class="info">
                 <h3>${evento.nombreEvento}</h3>
-                <p>Lugar: ${evento.nombreEvento}</p>
+                <p>Lugar: ${evento.lugarEvento}</p>
                 <p>Fecha: ${evento.fechaEvento}</p>
                 <p>Hora: ${evento.horaEvento}</p>
             </div>
