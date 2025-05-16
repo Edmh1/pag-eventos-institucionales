@@ -1,4 +1,4 @@
-import { obtenerTotalEventos, obtenerEventos } from "./api/eventoApi.js";
+import { obtenerTotalEventos, obtenerEventos, obtenerMisEventos } from "./api/eventoApi.js";
 
 let currentPage = 1; // Inicializa la página actual
 let totalPages = 1;  // Inicializa el número de páginas
@@ -57,4 +57,38 @@ async function goToPage(page) {
     document.getElementById("currentPage").textContent = currentPage;
 }
 
-export { setupPage, goToPage}
+async function goToMyPage(page) {
+    if (page < 1) {
+        page = 1;
+    } else if (page > totalPages) {
+        page = totalPages;
+    }
+    currentPage = page;
+    
+    let eventos = await obtenerMisEventos(currentPage, nElementos);
+    const contenedor = document.getElementById("cont-eventos");
+    contenedor.innerHTML = ""; // Limpiar eventos anteriores
+
+    eventos.forEach(evento => {
+        const div = document.createElement("div");
+        let img = (!evento.rutaImgEvento || evento.rutaImgEvento === "null")? "resources/img/party.jpg" : evento.rutaImgEvento;
+
+        div.className = "cajita-evento";
+        div.id = evento.idEvento;
+        div.innerHTML = `
+            <img id="img-evento" src="${img}" alt="Evento">
+            <div class="info">
+                <h3 id="nombre-evento-text">${evento.nombreEvento}</h3>
+                <p id="lugar-evento-text">Lugar: ${evento.lugarEvento}</p>
+                <p>Fecha: ${evento.fechaEvento}</p>
+                <p>Hora: ${evento.horaEvento}</p>
+            </div>
+        `;
+        contenedor.appendChild(div);
+    });
+
+    // Actualizar el número de página actual (opcional)
+    document.getElementById("currentPage").textContent = currentPage;
+}
+
+export { setupPage, goToPage, goToMyPage}

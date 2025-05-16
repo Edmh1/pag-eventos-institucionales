@@ -39,6 +39,22 @@ async function obtenerEventos(pagina, limite) {
     }
 }
 
+async function obtenerMisEventos(pagina, limite, idUsuario) {
+    try {
+        showLoader();
+        const response = await fetch(API_EVENTO+`?pagina=${pagina}&limite=${limite}&idUsuario=${idUsuario}`);
+        if (!response.ok) throw new Error("Error al obtener eventos");
+
+        const data = await response.json();
+        return data.content; // Devolver solo los eventos
+    } catch (error) {
+        console.error("Error:", error);
+        return []; // Devolver array vacío en caso de error
+    }finally{
+        hideLoader();
+    }
+}
+
 async function crearEvento(evento) {
     try {
         showLoader();
@@ -123,4 +139,4 @@ async function updateEvento(evento) {
     }
 }
 
-export {obtenerTotalEventos, obtenerEventos, crearEvento, updateEvento};
+export {obtenerTotalEventos, obtenerEventos, obtenerMisEventos ,crearEvento, updateEvento};

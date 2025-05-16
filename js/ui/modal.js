@@ -256,7 +256,8 @@ var url;
 
 async function setupMisEventos() {
     console.log("Cargar mis eventos");
-    await goToPage(1);
+    
+    await goToMyPage(1);
     addEventListenerCajas();
 }
 
