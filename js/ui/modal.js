@@ -319,8 +319,7 @@ function setupActualizarEvento() {
 
         const nombre = document.getElementById("nombre-evento").value.trim();
         const lugar = document.getElementById("lugar-evento").value.trim();
-        document.getElementById("imgPreview").src = url;
-
+        
         if (!nombre || !lugar) {
             return Swal.fire({
                 icon: 'warning',
@@ -328,7 +327,7 @@ function setupActualizarEvento() {
                 text: 'Por favor, completa todos los campos.',
             });
         }
-
+        
         if (file) {
             try {
                 url = await subirImagenAImgur(file);
@@ -344,7 +343,8 @@ function setupActualizarEvento() {
                 });
             }
         }
-
+        
+        document.getElementById("imgPreview").src = url;
         const evento = {
             nombreEvento: nombre,
             lugarEvento: lugar,
