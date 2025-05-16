@@ -222,7 +222,8 @@ function setupCrearEvento() {
             fechaEvento: fecha,
             horaEvento: hora,
             horaFinEvento: horaFin,
-            rutaImgEvento: url
+            rutaImgEvento: url,
+            idUsuario: localStorage.getItem("idUsuario")
         };
 
         await enviarEvento(evento);
