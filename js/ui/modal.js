@@ -252,14 +252,15 @@ async function enviarEvento(evento) {
 function setupMisEventos() {
     console.log("Cargar mis eventos");
     goToPage(1);
-    const cajitasEvento = document.querySelectorAll('.cajita-evento');
+    document.querySelectorAll('.cajita-evento').forEach((cajita) => {
+        cajita.addEventListener('click', (e) => {
+            e.stopPropagation(); // Opcional: evita burbujas
+            e.preventDefault();  // Previene comportamientos no deseados
 
-    // Recorremos todas las cajitas
-    cajitasEvento.forEach((cajita) => {
-        cajita.addEventListener('click', () => {
-            console.log(`Clic en evento`);
-            loadView("actualizar_evento");
+            console.log(`Clic en evento ${index}`);
+            loadView("actualizar_evento", index);
         });
+
     });
 }
 
