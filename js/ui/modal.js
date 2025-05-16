@@ -5,6 +5,7 @@ import { updateHeader } from "./header.js";
 import { cargarTipoEvento } from "../api/tipoEventoApi.js";
 import { crearEvento } from "../api/eventoApi.js";
 import { goToPage } from "../events.js";
+import { updateEvento } from "../api/eventoApi.js";
 
 function openModal(formToShow) {
     document.getElementById("modal").style.display = "flex";
