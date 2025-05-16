@@ -57,7 +57,7 @@ async function goToPage(page) {
     document.getElementById("currentPage").textContent = currentPage;
 }
 
-async function goToMyPage(page) {
+async function goToMyPage(page, idUsuario) {
     if (page < 1) {
         page = 1;
     } else if (page > totalPages) {
@@ -65,7 +65,7 @@ async function goToMyPage(page) {
     }
     currentPage = page;
     
-    let eventos = await obtenerMisEventos(currentPage, nElementos);
+    let eventos = await obtenerMisEventos(currentPage, nElementos, idUsuario);
     const contenedor = document.getElementById("cont-eventos");
     contenedor.innerHTML = ""; // Limpiar eventos anteriores
 

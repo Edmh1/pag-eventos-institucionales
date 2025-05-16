@@ -253,11 +253,12 @@ async function enviarEvento(evento) {
 var nombre;
 var lugar;
 var url;
+var idUsuario = localStorage.getItem("idUsuario");
 
 async function setupMisEventos() {
     console.log("Cargar mis eventos");
     
-    await goToMyPage(1);
+    await goToMyPage(1, idUsuario);
     addEventListenerCajas();
 }
 
