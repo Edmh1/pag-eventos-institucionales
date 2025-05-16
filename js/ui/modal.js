@@ -2,6 +2,8 @@ import { camContrasena } from "../auth.js";
 import { eliminarUsuario, actualizarImg } from "../api/usuarioApi.js";
 import { subirImagenAImgur } from "../api/imgur.js";
 import { updateHeader } from "./header.js";
+import { cargarTipoEvento } from "../api/tipoEventoApi.js";
+import { crearEvento } from "../api/eventoApi.js";
 
 function openModal(formToShow) {
     document.getElementById("modal").style.display = "flex";
@@ -109,12 +111,15 @@ function actualizarPerfil() {
 }
 
 function setupCrearEvento() {
+    cargarTipoEvento();
+
+    const form = document.getElementById("formCrearEvento");
     const uploadBtn = document.getElementById("uploadBtn");
     const fileInput = document.getElementById("fileInput");
     const imgPreview = document.getElementById("imgPreview");
     var vistaPreviaLabel = document.getElementById("vista-previa");
 
-    if (!uploadBtn || !fileInput || !imgPreview) {
+    if (!form || !uploadBtn || !fileInput || !imgPreview) {
         console.warn("Algunos elementos no se encontraron en el DOM.");
         return;
     }
@@ -127,7 +132,6 @@ function setupCrearEvento() {
         const file = event.target.files[0];
 
         if (file) {
-            // Verificar si el archivo es una imagen
             if (!file.type.startsWith("image/")) {
                 vistaPreviaLabel.textContent = "Por favor, selecciona una imagen válida.";
                 return;
@@ -142,10 +146,102 @@ function setupCrearEvento() {
                 imgPreview.style.display = "block";
             };
 
-            reader.readAsDataURL(file); // IMPORTANTE: Aquí se activa el evento `onload`
+            reader.readAsDataURL(file);
+        }
+    });
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const file = fileInput.files[0];
+        if (!file) {
+            vistaPreviaLabel.textContent = "Por favor, selecciona una imagen.";
+            return;
+        }
+
+        const nombre = document.getElementById("nombre-evento").value.trim();
+        const fecha = document.getElementById("fecha-evento").value;
+        const hora = document.getElementById("hora-evento").value;
+        const horaFin = document.getElementById("hora-fin-evento").value;
+        const lugar = document.getElementById("lugar-evento").value.trim();
+        const tipoEvento = document.getElementById("tipo-evento").value;
+
+        if (!nombre || !fecha || !hora || !horaFin || !lugar || !tipoEvento) {
+            return Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'Por favor, completa todos los campos.',
+            });
+        }
+
+        if (hora > horaFin) {
+            return Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'La hora de inicio no puede ser mayor a la hora de fin.',
+            });
+        }
+
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0); 
+
+        const fechaEvento = new Date(fecha);
+        fechaEvento.setHours(0, 0, 0, 0); 
+
+        if (fechaEvento < hoy) {
+            return Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'La fecha no puede ser menor a la fecha actual.',
+            });
+        }
+
+
+        try {
+            const url = await subirImagenAImgur(file);
+            if (!url) {
+                vistaPreviaLabel.textContent = "Error al subir la imagen.";
+                return;
+            }
+            const evento = {
+                idTipoEvento: parseInt(tipoEvento),
+                nombreEvento: nombre,
+                lugarEvento: lugar,
+                fechaEvento: fecha,
+                horaEvento: hora,
+                horaFinEvento: horaFin,
+                rutaImgEvento: url
+            };
+            console.log(evento);
+            await enviarEvento(evento);
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo cargar la imagen intente más tarde.',
+            });
         }
     });
 }
+
+
+async function enviarEvento(evento) {
+
+    try {
+        const response = await crearEvento(evento); 
+        if (!response.ok) {
+            throw new Error('Error al crear evento');
+        }
+    } catch (err) {
+        console.error(err);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo crear el evento. Intenta nuevamente.',
+        });
+    }
+}
+
 
 
 

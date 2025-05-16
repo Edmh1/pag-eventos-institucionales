@@ -39,5 +39,47 @@ async function obtenerEventos(pagina, limite) {
     }
 }
 
+async function crearEvento(evento) {
+    try {
+        showLoader();
+        const response = await fetch(API_EVENTO, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(evento)
+        });
+        console.log(response);
 
-export {obtenerTotalEventos, obtenerEventos}
+        if (!response.ok) {
+            const errorText = await response.text();
+            // Intentamos parsear solo si es JSON válido
+            try {
+                const errorInfo = JSON.parse(errorText);
+                throw new Error(errorInfo.info || "Error desconocido");
+            } catch (jsonError) {
+                throw new Error("Error al crear evento");
+            }
+        }
+
+        Swal.fire({
+            title: "Registro exitoso",
+            text: "El evento ha sido registrado correctamente.",
+            icon: "success"
+        });
+
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message || "Ocurrió un error inesperado.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+        });
+    } finally {
+        hideLoader();
+    }
+}
+
+
+export {obtenerTotalEventos, obtenerEventos, crearEvento}
