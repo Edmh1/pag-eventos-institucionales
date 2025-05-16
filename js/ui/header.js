@@ -34,6 +34,9 @@ function updateHeader() {
     document.getElementById("user-pic")?.addEventListener("click", () => {
         loadView("perfil");
     });
+    document.getElementById("crear-evento")?.addEventListener("click", () => {
+        loadView("crear_evento");
+    });
 }
 
 

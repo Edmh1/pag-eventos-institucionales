@@ -14,11 +14,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
+}
+
+main {
+    flex: 1;
+    display: flex;
 }
 
 /*Estos son los estilos del header*/
@@ -330,15 +335,18 @@ main {
 
 /* Perfil */
 .perfil-container {
-    background-color: #dad5d5; /* Fondo más claro para un look moderno */
+    background-color: #dad5d5;
+    /* Fondo más claro para un look moderno */
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para profundidad */
     max-width: 320px;
     width: 100%;
     margin: 2rem auto;
     text-align: center;
-    font-family: 'Arial', sans-serif; /* Fuente más moderna */
+    font-family: 'Arial', sans-serif;
+    /* Fuente más moderna */
 }
 
 .perfil-header {
@@ -355,12 +363,14 @@ main {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid #007bff;
-    transition: transform 0.3s ease-in-out; /* Efecto de transformación al hacer hover */
+    transition: transform 0.3s ease-in-out;
+    /* Efecto de transformación al hacer hover */
     margin-bottom: 1rem;
 }
 
 .perfil-imagen:hover {
-    transform: scale(1.1); /* Aumentar la imagen cuando se pasa el ratón */
+    transform: scale(1.1);
+    /* Aumentar la imagen cuando se pasa el ratón */
 }
 
 .perfil-info h2 {
@@ -408,13 +418,15 @@ main {
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 80%; /* Mejor tamaño del botón */
+    width: 80%;
+    /* Mejor tamaño del botón */
     margin: 1rem auto;
 }
 
 .perfil-eliminar:hover {
     background-color: #c82333;
-    transform: scale(1.05); /* Aumenta el tamaño del botón al pasar el ratón */
+    transform: scale(1.05);
+    /* Aumenta el tamaño del botón al pasar el ratón */
 }
 
 /* Responsive */
@@ -450,9 +462,9 @@ main {
     gap: 1rem;
     padding: 1rem;
     font-family: 'Segoe UI', sans-serif;
-  }
+}
 
-  .page-btn {
+.page-btn {
     background-color: #004a87;
     color: white;
     border: none;
@@ -461,22 +473,21 @@ main {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
 
-  .page-btn:hover {
+.page-btn:hover {
     background-color: #357ABD;
-  }
+}
 
-  .page-info {
+.page-info {
     font-size: 1rem;
     font-weight: 500;
     color: #333;
-  }
+}
 
 
 /*Estos son los estilos del footer*/
 footer {
-    margin-top: 2em;
     height: 150px;
     background-color: #004a87;
     width: 100%;
@@ -517,6 +528,18 @@ footer {
 
     .modal-content {
         width: 80%;
+    }
+
+    #mis-eventos {
+        display: none;
+    }
+
+    #mis-eventos {
+        display: none;
+    }
+
+    #crear-evento {
+        display: none;
     }
 
     #cont-footer {
@@ -615,121 +638,197 @@ footer {
     }
 }
 
-
-.grid-mis-eventos {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(4, 1fr);
-gap: 8px;
+/*---Crear eventos css---*/
+.grid {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
 }
+
 .item {
-background-color: #000000;
-color: #ffffff;
-border-radius: 5px;
-padding: 20px;
-font-size: 150%;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 150%;
 }
+
 .mobile-only {
-display: block;
-}
-.desktop-only {
-display: none;
-}
-
-.item-titulo{
-    grid-column: 1 / span 3;
-    grid-row: 1;
-}
-
-.item-campos {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 3;
-}
-
-.item-file {
-    grid-column: 3;
-    grid-row: 2 / span 2;
-}
-
-.item-botones {
-    grid-column: 3;
-    grid-row: 4;
-}
-@media (min-width: 768px) {
-.grid-mis-eventos {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 8px;
-}
-.mobile-only {
-    display: none;
-}
-.desktop-only {
     display: block;
 }
 
-.item-titulo{
-    grid-column: 1 / span 3;
+.desktop-only {
+    display: none;
+}
+
+.item-0 {
+    grid-column: 1 / span 4;
     grid-row: 1;
+    color: #004a87;
+    font-family: 'Leelwadee-Bold', sans-serif;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.item-campos {
+.item-1 {
     grid-column: 1 / span 2;
-    grid-row: 2 / span 3;
-}
-
-.item-file {
-    grid-column: 3;
     grid-row: 2 / span 2;
 }
 
-.item-botones {
-    grid-column: 3;
-    grid-row: 4;
+.form-crear-evento {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* Reducir el espacio entre elementos */
+    border-radius: 8px;
+    color: #004a87;
+    margin: 0 auto;
+    /* Centrar el formulario */
 }
 
+.form-crear-evento label {
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    color: #004a87;
+    user-select: none;
+}
+
+.form-crear-evento input,
+.form-crear-evento select {
+    padding: 8px;
+    /* Reducir el padding */
+    border: 1px solid #c08e2d;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #004a87;
+    font-size: 0.95em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-crear-evento input:focus,
+.form-crear-evento select:focus {
+    border-color: #ffa500;
+    background-color: #fafafa;
+    outline: none;
+}
+
+.form-crear-evento button {
+    padding: 8px;
+    background-color: #9dc540;
+    /* Fondo azul más oscuro */
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-crear-evento button:hover {
+    background-color: #4f770f;
+    transition: background-color 0.3s ease;
 }
 
 
-.custum-file-upload {
-  height: 200px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  gap: 20px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed #cacaca;
-  background-color: rgba(255, 255, 255, 1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+.item-2 {
+    grid-column: 3 / span 2;
+    grid-row: 2 / span 2;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    #vista-previa {
+        color: #004a87;
+    }
+
+    .preview-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        flex-direction: column;
+
+        /* From Uiverse.io by SpatexDEV */
+        button {
+            border: none;
+            display: flex;
+            padding: 0.75rem 1.5rem;
+            background-color: #9dc540;  
+            color: #ffffff;
+            font-size: 0.75rem;
+            line-height: 1rem;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            vertical-align: middle;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            user-select: none;
+            gap: 0.75rem;
+            box-shadow:
+                0 4px 6px -1px #488aec31,
+                0 2px 4px -1px #488aec17;
+            transition: all 0.6s ease;
+        }
+
+        button:hover {
+            box-shadow:
+                0 10px 15px -3px #488aec4f,
+                0 4px 6px -2px #488aec17;
+        }
+
+        button:focus,
+        button:active {
+            opacity: 0.85;
+            box-shadow: none;
+        }
+
+        button svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
 }
 
-.custum-file-upload .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 8px;
+    }
 
-.custum-file-upload .icon svg {
-  height: 80px;
-  fill: rgba(75, 85, 99, 1);
-}
+    .mobile-only {
+        display: none;
+    }
 
-.custum-file-upload .text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .desktop-only {
+        display: block;
+    }
 
-.custum-file-upload .text span {
-  font-weight: 400;
-  color: rgba(75, 85, 99, 1);
-}
+    .item-0 {
+        grid-column: 1 / span 4;
+        grid-row: 1;
+    }
 
-.custum-file-upload input {
-  display: none;
+    .item-1 {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 2;
+    }
+
+    .item-2 {
+        grid-column: 3 / span 2;
+        grid-row: 2 / span 2;
+    }
+
 }
