@@ -249,36 +249,67 @@ async function enviarEvento(evento) {
     }
 }
 
-function setupMisEventos() {
+var nombre;
+var lugar;
+
+async function setupMisEventos() {
     console.log("Cargar mis eventos");
-    goToPage(1);
-    document.querySelectorAll('.cajita-evento').forEach((cajita) => {
-        cajita.addEventListener('click', (e) => {
-            e.stopPropagation(); // Opcional: evita burbujas
-            e.preventDefault();  // Previene comportamientos no deseados
+    await goToPage(1);
+    addEventListenerCajas();
+}
 
-            console.log(`Clic en evento ${index}`);
-            loadView("actualizar_evento", index);
-        });
-
+function addEventListenerCajas() {
+    const cajas = document.querySelectorAll(".cajita-evento");
+    cajas.forEach((caja) => {
+        caja.onclick = () => {
+            localStorage.setItem("idEvento", caja.id);
+            loadView("actualizar_evento");
+            nombre = document.getElementById("nombre-evento-text").textContent;
+            lugar = document.getElementById("lugar-evento-text").textContent;
+        }
     });
 }
 
 function setupActualizarEvento() {
-    const nombre = document.getElementById("nombre-evento");
-    const fecha = document.getElementById("fecha-evento");
-    const hora = document.getElementById("hora-evento");
-    const horaFin = document.getElementById("hora-fin-evento");
-    const lugar = document.getElementById("lugar-evento");
-    const tipoEvento = document.getElementById("tipo-evento");
+    const nombreEvento = document.getElementById("nombre-evento");
+    const lugarEvento = document.getElementById("lugar-evento");
 
-    nombre.value = "Prueba";
-    fecha.value = "2023-10-10";
-    hora.value = "10:00";
-    horaFin.value = "12:00";
-    lugar.value = "Prueba";
-    tipoEvento.value = "1";
+    lugar = quitarPrefijo(lugar, "Lugar:");
 
+    nombreEvento.value = nombre;
+    lugarEvento.value = lugar;
+
+    const form = document.getElementById("formActualizarEvento");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombre-evento").value.trim();
+        const lugar = document.getElementById("lugar-evento").value.trim();
+
+        if (!nombre || !lugar) {
+            return Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'Por favor, completa todos los campos.',
+            });
+        }
+
+        const evento = {
+            nombreEvento: nombre,
+            lugarEvento: lugar,
+            idEvento: localStorage.getItem("idEvento")
+        };
+
+        await updateEvento(evento);
+    });
+}
+
+function quitarPrefijo(texto, prefijo) {
+    if (texto.startsWith(prefijo)) {
+        return texto.slice(prefijo.length).trim();
+    }
+    return texto;
 }
 
 async function confirmEliminar() {

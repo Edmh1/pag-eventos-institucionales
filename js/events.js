@@ -40,11 +40,12 @@ async function goToPage(page) {
         let img = (!evento.rutaImgEvento || evento.rutaImgEvento === "null")? "resources/img/party.jpg" : evento.rutaImgEvento;
 
         div.className = "cajita-evento";
+        div.id = evento.idEvento;
         div.innerHTML = `
             <img src="${img}" alt="Evento">
             <div class="info">
-                <h3>${evento.nombreEvento}</h3>
-                <p>Lugar: ${evento.lugarEvento}</p>
+                <h3 id="nombre-evento-text">${evento.nombreEvento}</h3>
+                <p id="lugar-evento-text">Lugar: ${evento.lugarEvento}</p>
                 <p>Fecha: ${evento.fechaEvento}</p>
                 <p>Hora: ${evento.horaEvento}</p>
             </div>
