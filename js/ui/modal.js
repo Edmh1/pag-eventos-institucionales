@@ -48,10 +48,10 @@ function setupModals() {
         } else if (e.target.id === "mod-cam-con") {
             e.preventDefault();
             openModal("cambiar-con");
-        } else if (e.target.id === "mod-eli-cuen"){
+        } else if (e.target.id === "mod-eli-cuen") {
             e.preventDefault(); //evita que el link de # haga que recargue la pag
             confirmEliminar();
-        } else if (e.target.id === "mod-img"){
+        } else if (e.target.id === "mod-img") {
             e.preventDefault();
             openModal("modificar-imagen");
             setupModificarImagen();
@@ -85,8 +85,11 @@ function loadView(nameView) {
         })
         .then(html => {
             document.getElementsByTagName("main")[0].innerHTML = html;
-            actualizarPerfil();
-            setupModals(); 
+            if (nameView === "perfil") {
+                actualizarPerfil();
+            } else if (nameView === "crear_evento") {
+                setupCrearEvento();
+            }
         })
         .catch(error => {
             document.getElementsByTagName("main")[0].innerHTML = "<p>Error al cargar la vista.</p>";
@@ -104,6 +107,47 @@ function actualizarPerfil() {
     document.querySelector(".perfil-info h2").textContent = username;
     document.querySelector(".perfil-info p").textContent = email;
 }
+
+function setupCrearEvento() {
+    const uploadBtn = document.getElementById("uploadBtn");
+    const fileInput = document.getElementById("fileInput");
+    const imgPreview = document.getElementById("imgPreview");
+    var vistaPreviaLabel = document.getElementById("vista-previa");
+
+    if (!uploadBtn || !fileInput || !imgPreview) {
+        console.warn("Algunos elementos no se encontraron en el DOM.");
+        return;
+    }
+
+    uploadBtn.addEventListener("click", function () {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            // Verificar si el archivo es una imagen
+            if (!file.type.startsWith("image/")) {
+                vistaPreviaLabel.textContent = "Por favor, selecciona una imagen válida.";
+                return;
+            }
+            vistaPreviaLabel.style.display = "none";
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+                imgPreview.style.width = "100%";
+                imgPreview.style.height = "auto";
+                imgPreview.style.display = "block";
+            };
+
+            reader.readAsDataURL(file); // IMPORTANTE: Aquí se activa el evento `onload`
+        }
+    });
+}
+
+
 
 async function confirmEliminar() {
     const result = await Swal.fire({
@@ -188,4 +232,4 @@ function setupModificarImagen() {
 
 
 
-export { closeAndResetModal, setupModals, resetForm ,showLoader, hideLoader, loadView };
+export { closeAndResetModal, setupModals, resetForm, showLoader, hideLoader, loadView };
