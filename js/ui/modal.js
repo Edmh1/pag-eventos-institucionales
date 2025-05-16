@@ -313,10 +313,6 @@ function setupActualizarEvento() {
         e.preventDefault();
 
         const file = fileInput.files[0];
-        if (!file) {
-            vistaPreviaLabel.textContent = "Por favor, selecciona una imagen.";
-            return;
-        }
 
         const nombre = document.getElementById("nombre-evento").value.trim();
         const lugar = document.getElementById("lugar-evento").value.trim();
@@ -330,7 +326,7 @@ function setupActualizarEvento() {
             });
         }
 
-        if (imgUrl !== document.getElementById("imgPreview").src) {
+        if (file) {
             try {
                 imgUrl = await subirImagenAImgur(file);
                 if (!imgUrl) {
