@@ -251,7 +251,7 @@ async function enviarEvento(evento) {
 
 var nombre;
 var lugar;
-var imgUrl;
+var url;
 
 async function setupMisEventos() {
     console.log("Cargar mis eventos");
@@ -267,7 +267,7 @@ function addEventListenerCajas() {
             loadView("actualizar_evento");
             nombre = document.getElementById("nombre-evento-text").textContent;
             lugar = document.getElementById("lugar-evento-text").textContent;
-            imgUrl = document.getElementById("img-evento").src;
+            url = document.getElementById("img-evento").src;
         }
     });
 }
@@ -316,7 +316,7 @@ function setupActualizarEvento() {
 
         const nombre = document.getElementById("nombre-evento").value.trim();
         const lugar = document.getElementById("lugar-evento").value.trim();
-        document.getElementById("imgPreview").src = imgUrl;
+        document.getElementById("imgPreview").src = url;
 
         if (!nombre || !lugar) {
             return Swal.fire({
@@ -328,7 +328,7 @@ function setupActualizarEvento() {
 
         if (file) {
             try {
-                imgUrl = await subirImagenAImgur(file);
+                url = await subirImagenAImgur(file);
                 if (!imgUrl) {
                     console.error("Error al subir la imagen");
                     return;
