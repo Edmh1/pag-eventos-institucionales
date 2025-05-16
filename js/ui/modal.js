@@ -330,10 +330,10 @@ function setupActualizarEvento() {
         }
 
         if (imgUrl !== document.getElementById("imgPreview").src) {
-            let url;
             try {
-                url = await subirImagenAImgur(file);
-                if (!url) {
+                imgUrl = await subirImagenAImgur(file);
+                if (!imgUrl) {
+                    vistaPreviaLabel.style.display = "block";
                     vistaPreviaLabel.textContent = "Error al subir la imagen.";
                     return;
                 }
