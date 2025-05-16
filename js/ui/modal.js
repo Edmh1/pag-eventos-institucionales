@@ -320,6 +320,7 @@ function setupActualizarEvento() {
 
         const nombre = document.getElementById("nombre-evento").value.trim();
         const lugar = document.getElementById("lugar-evento").value.trim();
+        document.getElementById("imgPreview").src = imgUrl;
 
         if (!nombre || !lugar) {
             return Swal.fire({
