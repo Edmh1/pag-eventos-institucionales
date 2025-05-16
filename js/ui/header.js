@@ -19,8 +19,7 @@ function updateHeader() {
     } else {
         html += `
             <div id="cont-user" class="user-header">
-                <button id="mis-eventos" class="button-header">Mis Eventos</button>
-                ${(admin) ? `<button id="crear-evento" class="button-header">Crear Evento</button>` : ""}
+                ${(admin) ? `<button id="mis-eventos" class="button-header">Mis Eventos</button> <button id="crear-evento" class="button-header">Crear Evento</button>` : ""}
                 <button id="cerrar-sesion" class="button-header">Cerrar Sesión</button>
                 <img src="${rutaImg}" alt="Usuario" id="user-pic">
                 <span style="color: white;">${username}</span>
