@@ -333,8 +333,7 @@ function setupActualizarEvento() {
             try {
                 imgUrl = await subirImagenAImgur(file);
                 if (!imgUrl) {
-                    vistaPreviaLabel.style.display = "block";
-                    vistaPreviaLabel.textContent = "Error al subir la imagen.";
+                    console.error("Error al subir la imagen");
                     return;
                 }
             } catch (err) {
