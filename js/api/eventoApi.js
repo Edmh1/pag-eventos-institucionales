@@ -81,5 +81,46 @@ async function crearEvento(evento) {
     }
 }
 
+async function updateEvento(evento) {
+    try {
+        showLoader();
+        const response = await fetch(API_EVENTO, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(evento)
+        });
 
-export {obtenerTotalEventos, obtenerEventos, crearEvento}
+        if (!response.ok) {
+            const errorText = await response.text();
+            try {
+                const errorInfo = JSON.parse(errorText);
+                throw new Error(errorInfo.info || "Error desconocido");
+            } catch (jsonError) {
+                throw new Error("Error al actualizar evento");
+            }
+        }
+
+        Swal.fire({
+            title: "Actualización exitosa",
+            text: "El evento ha sido actualizado correctamente.",
+            icon: "success"
+        });
+
+        return true;
+
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message || "Ocurrió un error inesperado.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#3085d6",
+        });
+    } finally {
+        hideLoader();
+    }
+}
+
+export {obtenerTotalEventos, obtenerEventos, crearEvento, updateEvento};

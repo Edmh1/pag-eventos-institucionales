@@ -4,6 +4,7 @@ import { subirImagenAImgur } from "../api/imgur.js";
 import { updateHeader } from "./header.js";
 import { cargarTipoEvento } from "../api/tipoEventoApi.js";
 import { crearEvento } from "../api/eventoApi.js";
+import { goToPage } from "../events.js";
 
 function openModal(formToShow) {
     document.getElementById("modal").style.display = "flex";
@@ -250,6 +251,7 @@ async function enviarEvento(evento) {
 
 function setupMisEventos() {
     console.log("Cargar mis eventos");
+    goToPage(1);
     const cajitasEvento = document.querySelectorAll('.cajita-evento');
 
     // Recorremos todas las cajitas
@@ -275,6 +277,7 @@ function setupActualizarEvento() {
     horaFin.value = "12:00";
     lugar.value = "Prueba";
     tipoEvento.value = "1";
+
 }
 
 async function confirmEliminar() {
