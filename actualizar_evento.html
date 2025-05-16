@@ -1,6 +1,6 @@
 <div class="grid">
     <div class="item item-0">
-        CREAR EVENTO
+        ACTUALIZAR EVENTO
         <div id="volver-div">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                 fill="#2563eb"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -37,15 +37,14 @@
                 <option value="teatro">Teatro</option>
                 <option value="conferencia">Conferencia</option>
             </select>
-
-            <button id="crear-evento">Crear Evento</button>
+            <button id="crear-evento">Guardar Cambios</button>
         </form>
     </div>
 
     <div class="item item-2">
         <div class="preview-container">
-            <h3 id="vista-previa">Vista previa de la imagen</h3>
-            <img id="imgPreview" src="" alt="Vista previa de la imagen" style="display: none;">
+            <h3 id="vista-previa" style="display: none;">Vista previa de la imagen</h3>
+            <img id="imgPreview" src="/resources/img/party.jpg" alt="Vista previa de la imagen">
             <!-- From Uiverse.io by SpatexDEV -->
             <button id="uploadBtn">
                 <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none"
@@ -56,9 +55,10 @@
                     <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#fffffff"
                         d="M17 15V18M17 21V18M17 18H14M17 18H20"></path>
                 </svg>
-                AGREGAR IMAGEN
+                ACTUALIZAR IMAGEN
             </button>
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
+        <button id="eliminar-evento">Eliminar Evento</button>
     </div>
 </div>

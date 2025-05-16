@@ -37,6 +37,9 @@ function updateHeader() {
     document.getElementById("crear-evento")?.addEventListener("click", () => {
         loadView("crear_evento");
     });
+    document.getElementById("mis-eventos")?.addEventListener("click", () => {
+        loadView("mis_eventos");
+    });
 }
 
 

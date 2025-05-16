@@ -91,6 +91,10 @@ function loadView(nameView) {
                 actualizarPerfil();
             } else if (nameView === "crear_evento") {
                 setupCrearEvento();
+            } else if (nameView === "mis_eventos") {
+                setupMisEventos();
+            } else if (nameView === "actualizar_evento") {
+                setupActualizarEvento();
             }
         })
         .catch(error => {
@@ -183,10 +187,10 @@ function setupCrearEvento() {
         }
 
         const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0); 
+        hoy.setHours(0, 0, 0, 0);
 
         const fechaEvento = new Date(fecha);
-        fechaEvento.setHours(0, 0, 0, 0); 
+        fechaEvento.setHours(0, 0, 0, 0);
 
         if (fechaEvento < hoy) {
             return Swal.fire({
@@ -220,7 +224,7 @@ function setupCrearEvento() {
             horaFinEvento: horaFin,
             rutaImgEvento: url
         };
-            
+
         await enviarEvento(evento);
     });
 }
@@ -229,7 +233,7 @@ function setupCrearEvento() {
 async function enviarEvento(evento) {
 
     try {
-        const response = await crearEvento(evento); 
+        const response = await crearEvento(evento);
         if (!response) {
             throw new Error('Error al crear evento');
         }
@@ -243,8 +247,34 @@ async function enviarEvento(evento) {
     }
 }
 
+function setupMisEventos() {
+    console.log("Cargar mis eventos");
+    const cajitasEvento = document.querySelectorAll('.cajita-evento');
 
+    // Recorremos todas las cajitas
+    cajitasEvento.forEach((cajita) => {
+        cajita.addEventListener('click', () => {
+            console.log(`Clic en evento`);
+            loadView("actualizar_evento");
+        });
+    });
+}
 
+function setupActualizarEvento() {
+    const nombre = document.getElementById("nombre-evento");
+    const fecha = document.getElementById("fecha-evento");
+    const hora = document.getElementById("hora-evento");
+    const horaFin = document.getElementById("hora-fin-evento");
+    const lugar = document.getElementById("lugar-evento");
+    const tipoEvento = document.getElementById("tipo-evento");
+
+    nombre.value = "Prueba";
+    fecha.value = "2023-10-10";
+    hora.value = "10:00";
+    horaFin.value = "12:00";
+    lugar.value = "Prueba";
+    tipoEvento.value = "1";
+}
 
 async function confirmEliminar() {
     const result = await Swal.fire({
