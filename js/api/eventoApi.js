@@ -42,7 +42,7 @@ async function obtenerEventos(pagina, limite) {
 async function obtenerMisEventos(pagina, limite, idUsuario) {
     try {
         showLoader();
-        const response = await fetch(API_EVENTO+`?pagina=${pagina}&limite=${limite}&idUsuario=${idUsuario}`);
+        const response = await fetch(API_EVENTO+`/por-user?pagina=${pagina}&limite=${limite}&idUsuario=${idUsuario}`);
         if (!response.ok) throw new Error("Error al obtener eventos");
 
         const data = await response.json();
