@@ -278,7 +278,8 @@ function addEventListenerCajas() {
 function setupActualizarEvento() {
     const nombreEvento = document.getElementById("nombre-evento");
     const lugarEvento = document.getElementById("lugar-evento");
-
+    const vistaPreviaLabel = document.getElementById("vista-previa");
+    
     lugar = quitarPrefijo(lugar, "Lugar:");
 
     nombreEvento.value = nombre;
