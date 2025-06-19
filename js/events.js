@@ -71,7 +71,7 @@ async function goToMyPage(page, idUsuario) {
 
     eventos.forEach(evento => {
         const div = document.createElement("div");
-        let img = (!evento.rutaImgEvento || evento.rutaImgEvento === "null")? "resources/img/party.jpg" : evento.rutaImgEvento;
+        let img = (!evento.rutaImgEvento || evento.rutaImgEvento === "null")? "resources/img/picture.jpg" : evento.rutaImgEvento;
 
         div.className = "cajita-evento";
         div.id = evento.idEvento;
